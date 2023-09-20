@@ -95,29 +95,29 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="first_name" placeholder="Your first name">
+                                    <input type="text" class="form-control" id="name" name="first_name" placeholder="Your first name" value="{{old('first_name')}}">
 {{--                                           required data-error="Please enter your first name">--}}
 {{--                                    <div class="help-block with-errors"></div>--}}
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="last_name" placeholder="Your last name">
+                                    <input type="text" class="form-control" id="name" name="last_name" placeholder="Your last name" value="{{old('last_name')}}">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="email" placeholder="Your email address" id="email" class="form-control" name="email">
+                                    <input type="email" placeholder="Your email address" id="email" class="form-control" name="email" value="{{old('email')}}">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" value="{{old('password')}}">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password" name="password_confirmation" placeholder="Confirm your password">
+                                    <input type="password" class="form-control" id="password" name="password_confirmation" placeholder="Confirm your password" value="{{old('password_confirmation')}}">
                                 </div>
                             </div>
                             <div class="col-md-12">

@@ -6,8 +6,9 @@ namespace App\ECommerce\Client\Services;
 use App\ECommerce\Client\Models\Client;
 use App\ECommerce\Client\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 class ClientAuthService
 {
@@ -30,14 +31,29 @@ class ClientAuthService
 
     public function authenticate(LoginRequest $request)
     {
-        $client = Client::where('email', $request->email)->first();
-        if($client){
-            $password = Hash::check($request->password, $client->password);
-            $password ? session()->put('client_id', $client->id) : '';
-            return $password
-                ? redirect(url('/'))
-                : redirect()->back()->with('error' , 'Sorry invalid data');
+        $credentials = [
+            'email'     => request()->input('email'),
+            'password'  => request()->input('password')
+        ];
+
+        if (auth()->attempt($credentials)) {
+
+            // Handle successful login
+            if (request()->filled('rememberMe')){
+                $token = hash('sha256', Str::random(10));
+                auth()->user()->update(['remember_token' => $token]);
+                Cookie::queue('remember_token', $token, 2880);   // Save the cookie for 2 days. 60*24*2
+            }
+            Auth::login($request->user());  // It will last for 2 hours as SESSION_LIFETIME
+            return redirect(url('/'));
+        }else{
+            return redirect()->back()->with('error' , 'Sorry invalid data');
         }
-        return redirect()->back()->with('error' , 'Sorry invalid data');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect(url('/'));
     }
 }

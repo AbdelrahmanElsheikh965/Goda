@@ -9,8 +9,13 @@ use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
+
     public function __construct(private ClientAuthService $clientAuthService) {}
 
+    public function index()
+    {
+        return view('Web.index');
+    }
     public function register()
     {
         return $this->clientAuthService->register();
@@ -25,6 +30,11 @@ class ClientController extends Controller
     public function login()
     {
         return $this->clientAuthService->login();
+    }
+
+    public function logout()
+    {
+        return $this->clientAuthService->logout();
     }
 
     public function authenticate(LoginRequest $request)

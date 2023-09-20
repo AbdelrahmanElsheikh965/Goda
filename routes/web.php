@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Web.index');
-});
+//Auth::routes(['verify' => true]);
 
 Route::controller('ClientController')->group(function (){
+   Route::get('/', 'index');
    Route::get('register', 'register');
    Route::post('store', 'store')->name('store');
    Route::get('login', 'login');
+   Route::get('logout', 'logout');
    Route::post('authenticate', 'authenticate')->name('authenticate');
 });
 
@@ -30,3 +32,5 @@ Route::controller('ProductController')
     Route::get('/{product}/show', 'show')->name('.show');
 });
 
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

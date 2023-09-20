@@ -107,6 +107,11 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <input type="checkbox" name="rememberMe"> Remember Me
+
+                                    <a style="float: right" href=""> Forgot your password? </a>
+                                </div>
+                                <div class="form-group">
                                     <b>Don't have an account? </b> <a href="{{url('/register')}}"> <u> Register now </u> </a>
                                 </div>
                                 <div class="submit-button text-center">

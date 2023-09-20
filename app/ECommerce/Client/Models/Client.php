@@ -2,15 +2,17 @@
 
 namespace App\ECommerce\Client\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-class Client extends Model
+class Client extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'gender'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'gender', 'remember_token'];
 
     /**
      * Always encrypt the password when it is updated.
@@ -22,4 +24,5 @@ class Client extends Model
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
 }
