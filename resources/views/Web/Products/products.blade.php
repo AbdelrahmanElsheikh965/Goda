@@ -1,4 +1,5 @@
 @extends('Web.app')
+@inject('product','App\ECommerce\Product\Models\Product')
 
 @push('meta-token')
     <meta id="tokenMeta" name="csrf-token" content="{{ csrf_token() }}">
@@ -51,9 +52,11 @@
                                 <div class="collapse show" id="sub-men2" data-parent="#list-group-men">
                                     <div class="list-group">
                                     @foreach($subCategories as $id => $subCategory)
-                                        <strong>
-                                            &nbsp; <a href="{{url('/products', ['subCategory' => $id])}}"> {{$subCategory}} </a> ( {{ $data[2][$subCategory] }} )
-                                        </strong>
+                                            <strong>
+                                            &nbsp; <a href="{{url('/products', ['subCategory' => $id])}}">
+                                                        {{$subCategory}}
+                                                    </a> ( {{ $product->getCount($id) }} )
+                                            </strong>
                                     @endforeach
                                     </div>
                                 </div>
@@ -139,7 +142,7 @@
                         alert(message);
                     },
                     error: (error) => {
-                        alert("Something wrong happened, If you aren't signed in, then you should sign in first");
+                        alert("Something wrong happened, If you aren't logged in, then you should login first");
                     }
                 });
                 event.preventDefault();

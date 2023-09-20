@@ -19,7 +19,7 @@ class CartController extends Controller
     public function cart()
     {
         # For faster loading use query builder and select only required columns.
-        $cartItems = DB::table('carts')->select(['product_id', 'name', 'price', 'discount', 'quantity'])
+        $cartItems = DB::table('carts')->select(['products.id', 'products.name', 'products.price', 'products.cover_image', 'products.discount', 'quantity'])
             ->join('products', 'id', '=', 'product_id')
             ->where('client_id', '=', Auth::id())->get();
 

@@ -180,6 +180,7 @@
         </div>
         <strong>Copyright &copy; 2022-2023 </strong> All rights reserved.
     </footer>
+
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->

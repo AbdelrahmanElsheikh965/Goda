@@ -16,7 +16,6 @@ Route::group([
 ], function (){
 
     Route::get('/', 'index');
-    Route::get('/profile', 'profile');
 
     Route::get('/register', 'register');
     Route::post('/store', 'store')->name('store');

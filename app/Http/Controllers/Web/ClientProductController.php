@@ -20,6 +20,7 @@ class ClientProductController extends Controller
         $webParagraphs  = Paragraph::all();
         $contactDetails = ContactUs::first();
         $data = $this->productService->index($request); // products + categoriesWithSubCategories
+
         return view('Web.Products.products', [
             'webImages'      => $webImages,
             'webParagraphs'  => $webParagraphs,

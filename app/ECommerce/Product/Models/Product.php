@@ -29,4 +29,9 @@ class Product extends Model
                         ->where('id', '!=', $product->id)->latest()->take(4)->get()
             ];
     }
+
+    public function getCount($subCategory)
+    {
+        return self::where('sub_category_id', $subCategory)->count();
+    }
 }

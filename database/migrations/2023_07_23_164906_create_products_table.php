@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->longText('cover_image');
-            $table->integer('price');
+            $table->double('price');
             $table->float('discount')->nullable();
             $table->json('size');
 

@@ -193,7 +193,7 @@
                         alert(message);
                     },
                     error: (error) => {
-                        alert("Something wrong happened, If you aren't signed in, then you should sign in first");
+                        alert("Something wrong happened, If you aren't logged in, then you should login in first");
                     }
                 });
                 event.preventDefault();
