@@ -4,6 +4,7 @@ namespace Database\Factories\ECommerce\Product\Models;
 
 use App\ECommerce\Product\Models\Product;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,14 +20,15 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $categoriesIDs = Category::pluck('id');
+        $categoriesIDs = SubCategory::pluck('id');
         return [
             'name'          => fake()->word(),
             'description'   => fake()->sentence(),
+            'cover_image'   => fake()->word(),
             'price'         => fake()->numberBetween(50, 350),
             'discount'      => (fake()->boolean(30) ? fake()->randomFloat(1, 0.1, 0.4) : NULL),
             'size'          => ['35', '42', '45', '51', '55'],
-            'category_id'   => fake()->randomElement($categoriesIDs)
+            'sub_category_id'   => fake()->randomElement($categoriesIDs)
         ];
     }
 }

@@ -19,9 +19,9 @@ class Client extends Authenticatable
      * @param $value
      * @return string
      */
-    public function setPasswordAttribute($value) : void
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+//    public function setPasswordAttribute($value) : void
+//    {
+//        $this->attributes['password'] = Hash::make($value);
+//    }
 
 }

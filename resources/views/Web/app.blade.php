@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @stack('meta-token')
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,42 +57,6 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="dropdown megamenu-fw">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> <u> Categories </u> </a>
-                        <ul class="dropdown-menu megamenu-content" role="menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-menu col-md-6">
-                                        <h6 class="title">Shoes</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">Men</a></li>
-                                                <li><a href="shop.html">Women</a></li>
-                                                <li><a href="shop.html">Kids</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-6">
-                                        <h6 class="title">Bags</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">Travel</a></li>
-                                                <li><a href="shop.html">Men</a></li>
-                                                <li><a href="shop.html">Women</a></li>
-                                            </ul>
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">Kids</a></li>
-                                                <li><a href="shop.html">Sports</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row -->
-                            </li>
-                        </ul>
-                    </li>
-
                     <li class="nav-item"><a class="nav-link" href="service.html">Our Service</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                 </ul>
@@ -111,19 +76,19 @@
                         </li>
 
                         <li>
-                            <a href="#">
-                                <i class="fa fa-shopping-bag"></i> <span class="badge">5</span>
+                            <a href="{{url('/cart')}}">
+                                <i class="fa fa-shopping-bag"></i> <span class="badge"> &nbsp; &nbsp; {{ \App\Models\Cart::where('client_id', auth()->user()->id)->count()  }} </span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="my-account.html">
+                            <a href="{{url('/profile')}}">
                                 <i class="fa fa-user"></i>
                             </a>
                         </li>
 
                         <li>
-                            <a href="wishlist.html">
+                            <a href="{{url('/wishlist')}}">
                                 <i class="fa fa-heart"></i>
                             </a>
                         </li>
@@ -313,6 +278,8 @@
 <!-- End copyright  -->
 
 <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+@stack('jQuery-Ajax')
 
 <!-- ALL JS FILES -->
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>

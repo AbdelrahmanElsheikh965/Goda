@@ -1,5 +1,9 @@
 @extends('Web.app')
 
+@push('meta-token')
+    <meta id="tokenMeta" name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @section('content')
 
     <!-- Start All Title Box -->
@@ -72,7 +76,7 @@
                             <li>
                                 <div class="form-group quantity-box">
                                     <label class="control-label">Quantity</label>
-                                    <input class="form-control" value="0" min="0" max="20" type="number">
+                                    <input class="form-control" value="1" id="quantity" min="1" max="20" type="number">
                                 </div>
                             </li>
                         </ul>
@@ -80,7 +84,7 @@
                         <div class="price-box-bar">
                             <div class="cart-and-bay-btn">
                                 <a class="btn hvr-hover" data-fancybox-close="" href="#">Buy New</a>
-                                <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
+                                <a class="btn hvr-hover" data-fancybox-close="" id="submit" style="cursor: pointer" href="">Add to cart</a>
                             </div>
                         </div>
 
@@ -269,3 +273,31 @@
     <!-- End Cart -->
 
 @endsection
+
+
+@push('jQuery-Ajax')
+    <script src="{{asset('jquery-2.2.4.js')}}" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        (function () {
+            $('#submit').click(function (event) {
+                var data = {
+                    product_id: {{$product->id}},
+                    quantity: $("#quantity").val(),
+                    _token: $('meta#tokenMeta').attr('content')
+                };
+                $.ajax({
+                    url:  '{{url('/add-to-cart')}}',
+                    type: 'POST',
+                    data: data,
+                    success: function (message) {
+                        alert(message);
+                    }
+                });
+               event.preventDefault();
+            });
+
+        })();
+    </script>
+@endpush

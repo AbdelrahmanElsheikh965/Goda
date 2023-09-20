@@ -17,7 +17,6 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'main_category' => fake()->randomElement(['Footwear', 'Bags']),
             'name'  => fake()->unique()->word()
         ];
     }

@@ -71,47 +71,11 @@
 
                         </div>
                     </div>
-{{--                    <div class="filter-price-left">--}}
-{{--                        <div class="title-left">--}}
-{{--                            <h3>Price</h3>--}}
-{{--                        </div>--}}
-{{--                        <div class="price-box-slider">--}}
-{{--                            <div id="slider-range"></div>--}}
-{{--                            <p>--}}
-{{--                                <input type="text" readonly style="border:0; color:#fbb714; font-weight:bold;">--}}
-{{--                                <button class="btn hvr-hover" type="submit">Filter</button>--}}
-{{--                            </p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
 
                 </div>
             </div>
             <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
-                <div class="right-product-box">
-{{--                    <div class="product-item-filter row">--}}
-{{--                        <div class="col-12 col-sm-8 text-center text-sm-left">--}}
-{{--                            <div class="toolbar-sorter-right">--}}
-{{--                                <span>Sort by </span>--}}
-{{--                                <form action="{{url('/products')}}">--}}
-{{--                                    <select id="basic" name="sort" class="selectpicker show-tick form-control" data-placeholder="$ USD">--}}
-{{--                                        <option data-display="Select"> Nothing </option>--}}
-{{--                                        <option type="submit" value="asc"> High Price → Low Price </option>--}}
-{{--                                        <option value="desc"> Low Price → High Price </option>--}}
-{{--                                    </select>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-12 col-sm-4 text-center text-sm-right">--}}
-{{--                            <ul class="nav nav-tabs ml-auto">--}}
-{{--                                <li>--}}
-{{--                                    <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-                    </div>
+                <div class="right-product-box"> </div>
 
                     <div class="row product-categorie-box">
                         <div class="tab-content">
@@ -124,13 +88,14 @@
                                                     <div class="type-lb">
                                                         @if($product->discount) <p class="sale">Sale</p> @endif
                                                     </div>
-                                                    <img src="images/" class="img-fluid" alt="Image">
+
+                                                    <img src="{{asset('storage/images/'.$product->cover_image)}}" class="img-fluid" alt="Image">
                                                     <div class="mask-icon">
                                                         <ul>
                                                             <li><a href="{{route('products.show', $product->id)}}" target="_blank" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                         </ul>
-                                                        <a class="cart" href="#">Add to Cart</a>
+                                                        <a class="cart" href="{{url('/add-to-cart', $product->id)}}">Add to Cart</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
@@ -144,6 +109,7 @@
                                             <strong> There's no P r o d u c t s .</strong>
                                     @endforelse
 
+{{--                                    {{  // TODO: Add pagination links }}--}}
                                 </div>
                             </div>
                         </div>
@@ -153,7 +119,6 @@
             </div>
         </div>
     </div>
-</div>
 <!-- End Shop Page -->
 @endsection
 

@@ -21,13 +21,14 @@ class ClientController extends Controller
 
     public function index()
     {
-        if (Cache::has('index_blade')){
-            return Cache::get('index_blade');
-        }else{
-            $index =  view('Web.index')->render();
-            Cache::set('index_blade', $index);
-            return $index;
-        }
+        return view('Web.index');
+//        if (Cache::has('index_blade')){
+//            return Cache::get('index_blade');
+//        }else{
+//            $index =  view('Web.index')->render();
+//            Cache::set('index_blade', $index);
+//            return $index;
+//        }
     }
     public function register()
     {
@@ -62,14 +63,9 @@ class ClientController extends Controller
         return redirect('/');
     }
 
-    public function cart()
+    public function profile()
     {
-        return view('Web.Lists.cart');
-    }
-
-    public function wishlist()
-    {
-        return view('Web.Lists.wishlist');
+        return view('Web.profile');
     }
 
 }

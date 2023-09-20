@@ -1,4 +1,7 @@
 @extends('Web.app')
+@push('meta-token')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
 
 @section('content')
 
@@ -24,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-main table-responsive">
-                        <table class="table">
+                        <table id="cartTable" class="table">
                             <thead>
                             <tr>
                                 <th>Images</th>
@@ -36,6 +39,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                        @foreach($cartItems as $item)
                             <tr>
                                 <td class="thumbnail-img">
                                     <a href="#">
@@ -44,70 +48,23 @@
                                 </td>
                                 <td class="name-pr">
                                     <a href="#">
-                                        Lorem ipsum dolor sit amet
+                                        {{$item->name}}
                                     </a>
                                 </td>
                                 <td class="price-pr">
-                                    <p>$ 80.0</p>
+                                    <p>$ {{$item->price}}</p>
                                 </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                                <td class="quantity-box"><input disabled type="number" size="4" value="{{$item->quantity}}" min="0" step="1" class="c-input-text qty text"></td>
                                 <td class="total-pr">
-                                    <p>$ 80.0</p>
+                                    <p>$ {{$item->price * $item->quantity}}</p>
                                 </td>
-                                <td class="remove-pr">
-                                    <a href="#">
+                                <td id="delete" class="remove-pr" data-id="{{$item->product_id}}">
+                                    <a style="cursor: pointer">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 60.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 30.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                        @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -173,3 +130,27 @@
     <!-- End Cart -->
 
 @endsection
+
+@push('jQuery-Ajax')
+    <script src="{{asset('jquery-2.2.4.js')}}" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        (function () {
+            $('td#delete').click(function (event) {
+                var product_id = $(this).attr('data-id');
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: '{{url('/remove-from-cart')}}',
+                    type: 'POST',
+                    data: {_token: CSRF_TOKEN, product_id: product_id},
+                    success: function (message) {
+                        alert(message);
+                        location.reload();
+                    }
+                })
+                event.preventDefault();
+            });
+        })();
+    </script>
+@endpush

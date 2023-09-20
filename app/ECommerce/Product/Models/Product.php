@@ -9,11 +9,12 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     protected $casts = ['size' => 'array'];
 
-    public function category()
+    public function subCategory()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Models\SubCategory');
     }
     public function images()
     {

@@ -13,4 +13,14 @@ class Category extends Model
     {
         return $this->hasMany('App\ECommerce\Product\Models\Product');
     }
+
+    public function subCategories()
+    {
+        return $this->hasMany('App\Models\SubCategory');
+    }
+
+    public function getAll()
+    {
+        return Category::all();
+    }
 }
