@@ -4,7 +4,6 @@
 
 @include('Helpers_Views.message')
 
-
 <!-- Start Slider -->
 <div id="slides-shop" class="cover-slides">
     <ul class="slides-container">

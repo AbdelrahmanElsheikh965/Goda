@@ -152,13 +152,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="footer-link">
-                        <h4>Information</h4>
-                        <ul>
-                            <li><a href="{{url('about-us')}}">About Us</a></li>
-{{--                            <li><a href="#">Our Sitemap</a></li>--}}
-                        </ul>
-                    </div>
+                    <!-- Our Sitemap -->
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-link-contact">

@@ -1,9 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Redis;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +32,22 @@ Route::group([
 
         Route::delete('/destroy/{product}', 'ProductController@destroy')->name('products.destroy');
     });
+
+    # Categories
+    Route::get('/categories', 'CategoryController@index');
+    Route::get('/categories/create', 'CategoryController@create');
+    Route::post('/categories/store', 'CategoryController@store');
+    Route::get('/categories/edit/{category}', 'CategoryController@edit');
+    Route::put('/categories/update/{category}', 'CategoryController@update');
+    Route::delete('/categories/delete/{category}', 'CategoryController@delete');
+
+    # Sub-categories
+    Route::get('/sub-categories', 'SubCategoryController@index');
+    Route::get('/sub-categories/create', 'SubCategoryController@create');
+    Route::post('/sub-categories/store', 'SubCategoryController@store');
+    Route::get('/sub-categories/edit/{subCategory}', 'SubCategoryController@edit');
+    Route::put('/sub-categories/update/{subCategory}', 'SubCategoryController@update');
+    Route::delete('/sub-categories/delete/{subCategory}', 'SubCategoryController@delete');
 
     # Contact-us 2 Routes
     Route::get('/contact-us', 'ContactUsController@index');

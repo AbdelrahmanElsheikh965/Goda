@@ -5,6 +5,7 @@ namespace App\ECommerce\Shared\Helpers;
 use App\ECommerce\Product\Models\Product;
 use App\Models\Place;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class Helper
 {
@@ -21,10 +22,19 @@ class Helper
         return self::$instance;
     }
 
-    public static function save($image, $path = 'app/public/images')
+    public static function save($image, $path = '/images')  // 'app/public/images' => is the default path.
     {
         if (! is_null($image) )
-            $image->move(storage_path($path), $image->getClientOriginalName());
+        {
+            if (!File::isDirectory(public_path($path)))
+            {
+                File::makeDirectory(public_path($path), 0777, true);
+                $image->move(public_path($path), $image->getClientOriginalName());
+            }else
+            {
+                $image->move(public_path($path), $image->getClientOriginalName());
+            }
+        }
     }
 
     public function getSlidesNames($arrayImages)

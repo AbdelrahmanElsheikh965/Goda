@@ -2,7 +2,7 @@
 @inject('categories','App\Models\Category')
 @inject('subCategories','App\Models\SubCategory')
 
-@section('title', 'Create Product . . .')
+@section('title', 'Create a new product . . .')
 @section('small-title', 'Create a brand new product')
 
 @push('meta-token')

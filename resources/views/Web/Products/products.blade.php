@@ -1,4 +1,3 @@
-@inject('categories','App\Models\Category')
 @extends('Web.app')
 
 @section('content')
@@ -38,35 +37,24 @@
                         <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
 
                             <div class="list-group-collapse sub-men">
-                                <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men2">Footwear
+
+                            @foreach($data[1] as $category => $subCategories)
+
+                                <a class="list-group-item list-group-item-action" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men2">
+                                    {{$category}}
                                 </a>
+
                                 <div class="collapse show" id="sub-men2" data-parent="#list-group-men">
                                     <div class="list-group">
-                                        @foreach($categories->all() as $catgory)
-                                            @if($catgory->main_category ==='Footwear')
-                                                <a href="{{url('/products', ['category' => $catgory->id])}}" class="list-group-item list-group-item-action">
-                                                    {{$catgory->name}} <small class="text-muted"> ({{$catgory->products->count()}})</small>
-                                                </a>
-                                            @endif
-                                        @endforeach
+                                    @foreach($subCategories as $id => $subCategory)
+                                        <strong>
+                                            &nbsp; <a href="{{url('/products', ['subCategory' => $id])}}"> {{$subCategory}} </a> ( {{ $data[2][$subCategory] }} )
+                                        </strong>
+                                    @endforeach
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="list-group-collapse sub-men">
-                                <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Bags
-                                </a>
-                                <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                    <div class="list-group">
-                                        @foreach($categories->all() as $catgory)
-                                            @if($catgory->main_category ==='Bags')
-                                                <a href="{{url('/products', ['catgory' => $catgory->id])}}" class="list-group-item list-group-item-action">
-                                                    {{$catgory->name}} <small class="text-muted"> ({{$catgory->products->count()}})</small>
-                                                </a>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
 
                         </div>
@@ -81,7 +69,7 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row">
-                                    @forelse($products as $product)
+                                    @forelse($data[0] as $product)
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
@@ -121,6 +109,4 @@
     </div>
 <!-- End Shop Page -->
 @endsection
-
-{{--{{$products->links()}}--}}
 
