@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Web;
 
 use App\ECommerce\Client\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
 use App\ECommerce\Client\Services\ClientAuthService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 
 class ClientController extends Controller
 {
