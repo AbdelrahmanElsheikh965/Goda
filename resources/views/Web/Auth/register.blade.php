@@ -133,7 +133,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-
+                                <div class="form-group">
+                                    <b>Already have an account? </b> <a href="{{url('/login')}}"> <u> Login now </u> </a>
+                                </div>
                                 <div class="submit-button text-center">
                                     <button class="btn hvr-hover" formmethod="post" formaction="{{url('/store')}}" id="submit" type="submit"> Save </button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>

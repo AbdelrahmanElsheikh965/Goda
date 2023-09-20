@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Client.index');
+    return view('Web.index');
 });
 
 Route::controller('ClientController')->group(function (){
    Route::get('register', 'register');
    Route::post('store', 'store')->name('store');
    Route::get('login', 'login');
-    Route::post('authenticate', 'authenticate')->name('authenticate');
+   Route::post('authenticate', 'authenticate')->name('authenticate');
 });
 
 Route::controller('ProductController')

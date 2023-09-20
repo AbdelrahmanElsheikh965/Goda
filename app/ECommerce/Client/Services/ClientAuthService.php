@@ -14,7 +14,7 @@ class ClientAuthService
 
     public function register()
     {
-        return view('Client.register');
+        return view('Web.Auth.register');
     }
 
     public function store(RegisterRequest $request)
@@ -25,7 +25,7 @@ class ClientAuthService
 
     public function login()
     {
-        return view('Client.login');
+        return view('Web.Auth.login');
     }
 
     public function authenticate(LoginRequest $request)
@@ -33,7 +33,10 @@ class ClientAuthService
         $client = Client::where('email', $request->email)->first();
         if($client){
             $password = Hash::check($request->password, $client->password);
-            return $password ? redirect(url('/')) : redirect()->back()->with('error' , 'Sorry invalid data');
+            $password ? session()->put('client_id', $client->id) : '';
+            return $password
+                ? redirect(url('/'))
+                : redirect()->back()->with('error' , 'Sorry invalid data');
         }
         return redirect()->back()->with('error' , 'Sorry invalid data');
     }

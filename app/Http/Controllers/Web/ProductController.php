@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->productService->index();
-        return view('products')->with('products', $products);
+        return view('Web.Products.products')->with('products', $products);
     }
 
     /**
@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $product = $this->productService->show($product);
-        return view('product')->with('product', $product);
+        return view('Web.Products.product')->with('product', $product);
     }
 
 }

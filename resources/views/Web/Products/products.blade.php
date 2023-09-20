@@ -1,4 +1,4 @@
-@extends('Client.app')
+@extends('Web.app')
 
 @section('content')
 

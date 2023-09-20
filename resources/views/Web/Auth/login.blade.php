@@ -105,7 +105,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-1">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <b>Don't have an account? </b> <a href="{{url('/register')}}"> <u> Register now </u> </a>
+                                </div>
                                 <div class="submit-button text-center">
                                     <button class="btn hvr-hover" id="submit" formmethod="post" formaction="{{url('/authenticate')}}" type="submit"> Authenticate </button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>

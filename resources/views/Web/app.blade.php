@@ -102,37 +102,46 @@
             <div class="attr-nav">
                 <ul>
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu">
-                        <a href="#">
-                            <i class="fa fa-shopping-bag"></i> <span class="badge">5</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="my-account.html">
-                            <i class="fa fa-user"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="wishlist.html">
-                            <i class="fa fa-heart"></i>
-                        </a>
-                    </li>
+
+                    @php if (session()->has('client_id')) {
+                            echo '<li>
+                                    <a href="">
+                                        <i class="fa fa-sign-out-alt"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-shopping-bag"></i> <span class="badge">5</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="my-account.html">
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="wishlist.html">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </li>';
+                        }else{
+                            echo '<li>
+                                    <a href="{{url("/login")}}">
+                                        <i class="fa fa-sign-in-alt"></i>
+                                    </a>
+                                </li>';
+                        }
+                    @endphp
+
                     <li>
                         <a href="{{url('register')}}">
                             <i class="fa fa-door-open"></i>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            <i class="fa fa-sign-out-alt"></i>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a href="{{url('/login')}}">
-                            <i class="fa fa-sign-in-alt"></i>
-                        </a>
-                    </li>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
@@ -161,86 +170,6 @@
 <div class="instagram-box">
     <div class="main-instagram owl-carousel owl-theme">
         <strong>Gouda Store</strong>
-        <!-- <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-01.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-02.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-03.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-04.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-05.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-06.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-07.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-08.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-09.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-05.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>
 <!-- End Instagram Feed  -->
