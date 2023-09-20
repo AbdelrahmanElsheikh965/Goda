@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\ECommerce\Client\Events\AccountCreatedEvent;
+use App\ECommerce\Client\Listeners\SendEmailListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +20,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        AccountCreatedEvent::class => [
+            SendEmailListener::class
+        ]
+//        'App\ECommerce\Client\Events\AccountCreatedEvent' =>[
+//            'App\ECommerce\Client\Listeners\SendEmailListener'
+//        ]
     ];
 
     /**

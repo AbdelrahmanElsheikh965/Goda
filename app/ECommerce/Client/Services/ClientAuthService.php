@@ -3,6 +3,7 @@
 
 namespace App\ECommerce\Client\Services;
 
+use App\ECommerce\Client\Events\AccountCreatedEvent;
 use App\ECommerce\Client\Models\Client;
 use App\ECommerce\Client\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
@@ -22,6 +23,7 @@ class ClientAuthService
     {
         $client = Client::create($request->validated());
         $client->setPasswordAttribute($request->password);
+        event(new AccountCreatedEvent($client));
     }
 
     public function login()

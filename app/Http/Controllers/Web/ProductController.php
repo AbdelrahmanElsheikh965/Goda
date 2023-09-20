@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Web;
 use App\ECommerce\Product\Services\ProductService;
 use App\ECommerce\Product\Models\Product;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function __construct(private ProductService $productService) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->productService->index();
+        $products = $this->productService->index($request);
         return view('Web.Products.products')->with('products', $products);
     }
 

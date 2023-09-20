@@ -7,7 +7,7 @@
 <div id="slides-shop" class="cover-slides">
     <ul class="slides-container">
         <li class="text-left">
-            <img src="images/banner-01.jpg" alt="">
+            <img src="images/banner-01.jpg" loading="lazy" alt="">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -19,11 +19,11 @@
             </div>
         </li>
         <li class="text-center">
-            <img src="images/banner-02.jpg" alt="">
+            <img src="images/banner-02.jpg" loading="lazy" alt="">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br>  </strong></h1>
+                        <h1 class="m-b-20"><strong>Welcome To <br> Gouda Store</strong></h1>
                         <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
                         <p><a class="btn hvr-hover" href="{{url('products')}}">Shop New</a></p>
                     </div>
@@ -31,7 +31,7 @@
             </div>
         </li>
         <li class="text-right">
-            <img src="images/banner-03.jpg" alt="">
+            <img src="images/banner-03.jpg" loading="lazy" alt="">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

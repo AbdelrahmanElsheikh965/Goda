@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,21 +13,27 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
+
 //Auth::routes(['verify' => true]);
 
 Route::controller('ClientController')->group(function (){
    Route::get('/', 'index');
    Route::get('register', 'register');
    Route::post('store', 'store')->name('store');
+   Route::get('/verify/{email}', 'verify');
    Route::get('login', 'login');
    Route::get('logout', 'logout');
    Route::post('authenticate', 'authenticate')->name('authenticate');
+
+    Route::get('/cart', 'cart')->name('.cart');
+    Route::get('/wishlist', 'wishlist')->name('.wishlist');
 });
 
 Route::controller('ProductController')
-    ->prefix('products')->name('products')->group(function (){
-    Route::get('/', 'index')->name('.index');
+        ->prefix('products')->name('products')->group(function (){
+    Route::get('/{category?}', 'index')->name('.index');
     Route::get('/{product}/show', 'show')->name('.show');
+
 });
 
 
