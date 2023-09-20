@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\ECommerce\User\Services\MainService;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class MainController extends Controller
 {
     public function __construct(private MainService $service){ }
 

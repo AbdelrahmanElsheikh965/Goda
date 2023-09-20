@@ -1,18 +1,30 @@
 {
     "private": true,
-    "type": "module",
+    "type": "commonjs",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "vite dev": "vite",
+        "vite build": "vite build",
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-vue": "^4.0.0",
         "axios": "^1.1.2",
+        "babel-preset-es2015": "^6.24.1",
         "bootstrap": "^5.2.3",
         "laravel-vite-plugin": "^0.7.5",
+        "resolve-url-loader": "^5.0.0",
         "sass": "^1.56.1",
+        "sass-loader": "^12.1.0",
         "vite": "^4.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "laravel-mix": "^6.0.49"
     }
 }

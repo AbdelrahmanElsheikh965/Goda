@@ -3,7 +3,6 @@
 
 namespace App\ECommerce\Product\Repositories;
 
-
 use App\ECommerce\Product\Models\Product;
 use App\ECommerce\Product\RepositoryInterfaces\ClientProductInterface;
 use Illuminate\Http\Request;
@@ -24,10 +23,7 @@ class ClientProductRepository implements ClientProductInterface
         if ($category = $request->category)
             return Product::with('category')->whereRaw('category_id = ' . $category)->paginate(9);
 
-        //TODO: Get products from cache, if not store then, return them.
-//        return Cache::remember('data', now()->addDay(), function (){
-            return Product::paginate(9);
-//        });
+        return Product::paginate(9);
     }
 
     /*

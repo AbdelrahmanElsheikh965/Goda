@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title> Gouda Store </title>
+    <title> Goda Store </title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -48,7 +48,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="{{asset('images/logo.png')}}" class="logo" alt=""></a>
+                <a class="navbar-brand" href="index.html"><img src="{{asset('images/neghw.jpg')}}" class="logo" alt=""></a>
             </div>
             <!-- End Header Navigation -->
 
@@ -57,8 +57,7 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="service.html">Our Service</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" target="_blank" href="{{url('contact-us')}}">Contact Us</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -129,87 +128,7 @@
 <!-- Start Instagram Feed  -->
 <div class="instagram-box">
     <div class="main-instagram owl-carousel owl-theme">
-        <strong>Gouda Store</strong>
-        <!-- <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-01.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-02.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-03.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-04.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-05.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-06.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-07.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-08.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-09.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-05.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div> -->
+        <strong>Goda Store</strong>
     </div>
 </div>
 <!-- End Instagram Feed  -->
@@ -222,17 +141,13 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget">
-                        <h4>About  </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <h4>About Goda</h4>
+                        <p>
+                            We are passionate about doing our part to make life better. We provide high-quality products, great value, and exceptional customer service. We connect people with products and services in new and unexpected ways. You can reach us through these social links.
                         </p>
                         <ul>
-                            <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://wa.me/+20"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -241,11 +156,7 @@
                         <h4>Information</h4>
                         <ul>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Customer Service</a></li>
                             <li><a href="#">Our Sitemap</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Delivery Information</a></li>
                         </ul>
                     </div>
                 </div>
@@ -289,7 +200,7 @@
 <script src="{{asset('js/jquery.superslides.min.js')}}"></script>
 <script src="{{asset('js/bootstrap-select.js')}}"></script>
 <script src="{{asset('js/inewsticker.js')}}"></script>
-<script src="{{asset('js/bootsnav.js.')}}"></script>
+<script src="{{asset('js/bootsnav.js')}}"></script>
 <script src="{{asset('js/images-loded.min.js')}}"></script>
 <script src="{{asset('js/isotope.min.js')}}"></script>
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
@@ -297,6 +208,7 @@
 <script src="{{asset('js/form-validator.min.js')}}"></script>
 <script src="{{asset('js/contact-form-script.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
+
 </body>
 
 </html>

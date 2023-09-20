@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wishlists', function (Blueprint $table) {
-            $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients');
+        Schema::create('web_images', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->text('image');
 
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedInteger('place_id');
+            $table->foreign('place_id')
+                ->references('id')->on('places')
+                ->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wishlist');
+        Schema::dropIfExists('web_images');
     }
 };

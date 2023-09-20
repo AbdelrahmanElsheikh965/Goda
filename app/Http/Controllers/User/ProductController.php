@@ -8,7 +8,7 @@ use App\ECommerce\Shared\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserProductController extends Controller
+class ProductController extends Controller
 {
     public function __construct(private UserProductService $service) { }
 

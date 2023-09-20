@@ -6,13 +6,9 @@ use App\ECommerce\Client\Models\Client;
 use App\ECommerce\Client\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
 use App\ECommerce\Client\Services\ClientAuthService;
+use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
 
 class ClientController extends Controller
 {
@@ -21,14 +17,8 @@ class ClientController extends Controller
 
     public function index()
     {
-        return view('Web.index');
-//        if (Cache::has('index_blade')){
-//            return Cache::get('index_blade');
-//        }else{
-//            $index =  view('Web.index')->render();
-//            Cache::set('index_blade', $index);
-//            return $index;
-//        }
+        $webImages = WebImage::all();
+        return view('Web.index', ['webImages' => $webImages]);
     }
     public function register()
     {

@@ -1,6 +1,7 @@
 @extends('Admin.master')
 @inject('subCategories','App\Models\SubCategory')
 @section('title', 'Products Page')
+@section('current-page', 'Products')
 @section('small-title', 'All of your store\'s products')
 
 @section('content')

@@ -65,7 +65,6 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{asset('adminAssets/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-{{--                            <span class="hidden-xs">{{ Illuminate\Support\Facades\Auth::user()->name }}</span>--}}
 
                         </a>
                         <ul class="dropdown-menu">
@@ -73,10 +72,6 @@
                             <li class="user-header">
                                 <img src="{{asset('adminAssets/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
-                                <p>
-{{--                                    {{ Auth::user()->name }}--}}
-{{--                                    <small>Member since &nbsp;{{ Auth::user()->created_at->format('F j, Y') }} </small>--}}
-                                </p>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -107,7 +102,6 @@
                     <img src="{{asset('adminAssets/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-{{--                    <p>{{ Auth::user()->name }}</p>--}}
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -132,75 +126,25 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-{{--                        @hasanyrole('AdminRole1|governorates')--}}
-                        <li><a href=""><i class="fa fa-circle-o"></i> Governorates</a></li>
-{{--                        @endrole--}}
-
-{{--                        @hasanyrole('AdminRole1|categories')--}}
                         <li><a href=""><i class="fa fa-circle-o"></i> Categories</a></li>
-{{--                        @endrole--}}
-
-{{--                        @hasanyrole('AdminRole1|cities')--}}
-                        <li><a href=""><i class="fa fa-circle-o"></i> Cities</a></li>
-{{--                        @endrole--}}
+                        <li><a href=""><i class="fa fa-circle-o"></i> Sub-Categories</a></li>
                     </ul>
                 </li>
 
-{{--                @hasanyrole('AdminRole1|posts')--}}
                 <li>
                     <a href="{{url('user/products')}}">
-                        <i class="fa fa-shoe-prints"></i> <span>Products</span>
-                        <span class="pull-right-container"> </span>
-                    </a>
-                </li>
-{{--                @endrole--}}
-
-                <li>
-                    <a href="">
-                        <i class="fa fa-user"></i> <span>Clients</span>
+                        <i class="fa fa-dashcube"></i> <span>Products</span>
                         <span class="pull-right-container"> </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="">
-                        <i class="fa fa-shoe-prints"></i> <span>Contacts</span>
+                    <a href="{{url('user/contact-us')}}">
+                        <i class="fa fa-contao"></i> <span>Contact Us</span>
                         <span class="pull-right-container"> </span>
                     </a>
                 </li>
 
-{{--                @hasrole('AdminRole1')--}}
-                <li>
-                    <a href="">
-                        <i class="fa fa-user-circle"></i> <span>Users</span>
-                        <span class="pull-right-container"> </span>
-                    </a>
-                </li>
-{{--                @endrole--}}
-
-                <!-- same as above one -->
-{{--                @role('AdminRole1')--}}
-                <li>
-                    <a href="">
-                        <i class="fa fa-code-fork"></i> <span>Roles</span>
-                        <span class="pull-right-container"> </span>
-                    </a>
-                </li>
-{{--                @endrole--}}
-
-                <li>
-                    <a href="">
-                        <i class="fa fa-cogs"></i> <span>Settings</span>
-                        <span class="pull-right-container"> </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-key"></i> <span>Change your password</span>
-                        <span class="pull-right-container"> </span>
-                    </a>
-                </li>
-                <li><a><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -218,7 +162,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Examples</a></li>
+                <li><a href="#">@yield('current-page')</a></li>
                 <li class="active">Gouda Store</li>
             </ol>
         </section>

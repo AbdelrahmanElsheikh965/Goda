@@ -21,10 +21,10 @@ class Helper
         return self::$instance;
     }
 
-    public static function save($image)
+    public static function save($image, $path = 'app/public/images')
     {
         if (! is_null($image) )
-            $image->move(storage_path('app/public/images'), $image->getClientOriginalName());
+            $image->move(storage_path($path), $image->getClientOriginalName());
     }
 
     public function getSlidesNames($arrayImages)

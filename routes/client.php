@@ -34,4 +34,7 @@ Route::group([
 
 });
 
+Route::get('contact-us', function (){
+    return view('Web.Static.contact-us');
+});
 

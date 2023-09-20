@@ -7,37 +7,37 @@
 <div id="slides-shop" class="cover-slides">
     <ul class="slides-container">
         <li class="text-left">
-            <img src="images/banner-01.jpg" loading="lazy" alt="">
+            <img src="{{asset('storage/AdminImages/'.$webImages[0]->image)}}" loading="lazy" alt="">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br>  </strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                        <p><a class="btn hvr-hover" href="{{url('products/')}}">Shop New</a></p>
+                        <h1 class="m-b-20"><strong>Welcome To <br> Goda Store </strong></h1>
+                        <p class="m-b-40">Click the button below to see how your our products will make you <br> amazed and willing to visit us as soon as possible.</p>
+                        <p><a class="btn hvr-hover" href="{{url('products/')}}">Let's Get Started</a></p>
                     </div>
                 </div>
             </div>
         </li>
         <li class="text-center">
-            <img src="images/banner-02.jpg" loading="lazy" alt="">
+            <img src="{{asset('storage/AdminImages/'.$webImages[1]->image)}}" loading="lazy" alt="">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Gouda Store</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                        <p><a class="btn hvr-hover" href="{{url('products')}}">Shop New</a></p>
+                        <h1 class="m-b-20"><strong>This is <br> Goda Store</strong></h1>
+                        <p class="m-b-40">We got very high-quality products with challenging prices <br> Visit us to be pleased and satisfied with our products.</p>
+                        <p><a class="btn hvr-hover" href="{{url('products')}}">Click to visit</a></p>
                     </div>
                 </div>
             </div>
         </li>
         <li class="text-right">
-            <img src="images/banner-03.jpg" loading="lazy" alt="">
+            <img src="{{asset('storage/AdminImages/'.$webImages[2]->image)}}" loading="lazy" alt="">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br>  </strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                        <p><a class="btn hvr-hover" href="{{url('products')}}">Shop New</a></p>
+                        <h1 class="m-b-20"><strong>Visit Us </strong></h1>
+                        <p class="m-b-40">The craziest offers and sales you can imagine you'll see here <br> Invite your friends and come to the place.</p>
+                        <p><a class="btn hvr-hover" href="{{url('products')}}">Go shopping now</a></p>
                     </div>
                 </div>
             </div>
@@ -56,32 +56,24 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/shoes-img.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Men Shoes</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/shirt-img.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Bags</a>
+                    <img class="img-fluid" src="images/sports_shoes.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sports</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/wallet-img.jpg" alt="" />
+                    <img class="img-fluid" src="images/Inkedkids_shoes_2.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Kids Shoes</a>
                 </div>
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/women-bag-img.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Women Shoes</a>
+                    <img class="img-fluid" src="images/Inkedwomen_bag.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Women Bags</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/shoes-img.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Shoes</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/women-shoes-img.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Sport Bags</a>
+                    <img class="img-fluid" src="images/Men_shoes.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Men Shoes</a>
                 </div>
             </div>
         </div>
@@ -96,18 +88,6 @@
             <div class="col-lg-12">
                 <div class="title-all text-center">
                     <h1>Featured Products</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="special-menu text-center">
-                    <div class="button-group filter-button-group">
-                        <button class="active" data-filter="*">All</button>
-                        <button data-filter=".top-featured">Top featured</button>
-                        <button data-filter=".best-seller">Best seller</button>
-                    </div>
                 </div>
             </div>
         </div>

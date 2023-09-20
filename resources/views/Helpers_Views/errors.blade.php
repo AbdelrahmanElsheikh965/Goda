@@ -1,9 +1,7 @@
 @if($errors->any())
-{{--    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">--}}
-        <div class="callout callout-danger">
-            @foreach($errors->all() as $error)
-                {{ $error }} <br>
-            @endforeach
-        </div>
-{{--    </div>--}}
+    <div class="callout callout-danger">
+        @foreach($errors->all() as $error)
+            {{ $error }} <br>
+        @endforeach
+    </div>
 @endif
