@@ -13,7 +13,7 @@ Route::group([
     Route::post('/remove-from-cart', 'CartController@removeFromCart');
 
     Route::get('/wishlist', 'WishlistController@wishlist');
-    Route::get('/add-to-wishlist', 'WishlistController@addToWishlist');
-    Route::get('/remove-from-wishlist', 'WishlistController@removeFromWishlist');
+    Route::post('/add-to-wishlist', 'WishlistController@addToWishlist');
+    Route::post('/remove-from-wishlist', 'WishlistController@removeFromWishlist');
 
 });

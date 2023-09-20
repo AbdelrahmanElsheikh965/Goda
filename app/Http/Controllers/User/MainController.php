@@ -15,12 +15,14 @@ class MainController extends Controller
     {
         return (Auth::guard('user')->user())
             ? $this->service->index('Admin.master')
-            : $this->service->index('Admin.Auth.login');
+            : redirect('/user/signin');
     }
 
     public function signIn()
     {
-        return view('Admin.Auth.login');
+        return (Auth::guard('user')->guest())
+            ? $this->service->index('Admin.Auth.login')
+            : redirect('/user');
     }
 
     public function authenticate(LoginRequest $request)
@@ -31,7 +33,7 @@ class MainController extends Controller
         ];
 
         if (auth()->guard('user')->attempt($credentials)) {
-            Auth::guard('user')->login($request->user());
+            Auth::guard('user')->login($request->user('user'));
             return redirect(url('/user'));
         } else {
             return redirect()->back()->with('error', 'Sorry invalid data');

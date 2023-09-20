@@ -1,4 +1,5 @@
 @extends('Web.app')
+
 @push('meta-token')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush

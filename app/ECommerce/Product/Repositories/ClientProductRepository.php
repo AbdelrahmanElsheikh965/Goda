@@ -15,7 +15,7 @@ class ClientProductRepository implements ClientProductInterface
      */
     public function index(Request $request)
     {
-        $products =  Product::with('subCategory')->paginate(9);
+        $products =  Product::with('subCategory')->paginate(12);
 
         // Preparing Categories sidebar with subcategories + counts.
         $categories = [];

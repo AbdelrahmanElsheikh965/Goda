@@ -14,7 +14,7 @@ class Helper
 
     public static function getInstance()
     {
-        // Applying singleton design pattern to reduce memory usage during live production.
+        // Applying singleton design pattern.
         if (self::$instance === null)
         {
             self::$instance = new self();

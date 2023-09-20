@@ -16,8 +16,17 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\SubCategory');
     }
+
     public function images()
     {
         return $this->hasMany('App\Models\Image');
+    }
+
+    public function related(Product $product)
+    {
+        return [
+                Product::where('sub_category_id', $product->sub_category_id)
+                        ->where('id', '!=', $product->id)->latest()->take(4)->get()
+            ];
     }
 }

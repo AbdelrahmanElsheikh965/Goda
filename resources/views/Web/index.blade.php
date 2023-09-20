@@ -1,5 +1,9 @@
 @extends('Web.app')
 
+@push('meta-token')
+    <meta id="tokenMeta" name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @section('content')
 
 @include('Helpers_Views.message')
@@ -31,6 +35,7 @@
                 </div>
             </div>
         </li>
+
         <li class="text-right">
             <img src="{{asset('storage/AdminImages/'.$webImages[2]->image)}}" loading="lazy" alt="">
             <div class="container">
@@ -55,36 +60,30 @@
 <div class="categories-shop">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/sports_shoes.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Sports</a>
+
+            @if($subCategories->count())
+                @for($i=0; $i < $subCategories->count(); $i+=2)
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="{{asset('admin/subCategories/' . $subCategories[$i]->image )}}" alt="" />
+                            <a class="btn hvr-hover" href="#">{{$subCategories[$i]->name}}</a>
+                        </div>
+                        @if($i+1 < $subCategories->count())
+                            <div class="shop-cat-box">
+                                <img class="img-fluid" src="{{asset('admin/subCategories/' . $subCategories[$i+1]->image )}}" alt="" />
+                                <a class="btn hvr-hover" href="#"> {{$subCategories[$i+1]->name}} </a>
+                            </div>
+                        @endif
+                    </div>
+                @endfor
+            @else
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1> No Sub-categories yet </h1>
+                    </div>
                 </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/sports_shoes.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Kids Bags</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/Inkedkids_shoes_2.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Kids Shoes</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/women-bag-imgl.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Women Bags</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/Men_shoes.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Men Shoes</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/Men_shoes.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Slippers</a>
-                </div>
-            </div>
+            @endif
+
         </div>
     </div>
 </div>
@@ -94,108 +93,79 @@
 <div class="products-box">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="title-all text-center">
-                    <h1>Featured Products</h1>
+            @if($latestProducts)
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1> Latest Products </h1>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
 
         <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
+            @forelse($latestProducts as $product)
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                @if($product->discount) <p class="sale">Sale</p> @endif
+                            </div>
+                            <img src="{{asset('images/'.$product->cover_image)}}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{{route('products.show', $product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" class="addToWishlist" data-id="{{$product->id}}"
+                                           data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
+                        <div class="why-text">
+                            <h4> <a href="{{route('products.show', $product->id)}}"> {{$product->name}} </a> </h4>
+                            <h5> {{$product->price}} </h5>
                         </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $7.79</h5>
                     </div>
                 </div>
-            </div>
+            @empty
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1> No products yet </h1>
+                    </div>
+                </div>
+            @endforelse
 
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="new">New</p>
-                        </div>
-                        <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $9.79</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
-                        </div>
-                        <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $10.79</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
-                        </div>
-                        <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $15.79</h5>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 <!-- End Products  -->
 
 @endsection
+
+@push('jQuery-Ajax')
+    <script src="{{asset('jquery-2.2.4.js')}}" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        (function () {
+
+            $('a.addToWishlist').click(function (event) {
+                var data = {
+                    product_id: $(this).data('id'),
+                    _token: $('meta#tokenMeta').attr('content')
+                };
+                $.ajax({
+                    url:  '{{url('/add-to-wishlist')}}',
+                    type: 'POST',
+                    data: data,
+                    success: function (message) {
+                        alert(message);
+                    },
+                    error: (error) => {
+                        alert("Something wrong happened, If you aren't signed in, then you should sign in first");
+                    }
+                });
+                event.preventDefault();
+            });
+
+        })();
+    </script>
+@endpush

@@ -1,5 +1,9 @@
 @extends('Web.app')
 
+@push('meta-token')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @section('content')
 
     <!-- Start All Title Box -->
@@ -27,87 +31,45 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Images</th>
+                                <th>Product Image</th>
                                 <th>Product Name</th>
                                 <th>Unit Price </th>
-                                <th>Stock</th>
-                                <th>Add Item</th>
-                                <th>Remove</th>
+                                <th>Discount (if found)</th>
+                                <th>Remove Item</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="quantity-box">In Stock</td>
-                                <td class="add-pr">
-                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 60.0</p>
-                                </td>
-                                <td class="quantity-box">In Stock</td>
-                                <td class="add-pr">
-                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 30.0</p>
-                                </td>
-                                <td class="quantity-box">In Stock</td>
-                                <td class="add-pr">
-                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
+
+                            @foreach($wishlistItems as $item)
+
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="#">
+                                            <img class="img-fluid" src="{{asset('images/' . $item->cover_image)}}" alt="" />
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                            {{$item->name}}
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p>$ {{$item->price}}</p>
+                                    </td>
+
+                                    <td class="quantity-box">
+                                        @if($item->discount) {{$item->discount}} @else No discount available @endif
+                                    </td>
+
+                                    <td class="remove-pr" id="remove" data-id="{{$item->id}}">
+                                        <a style="cursor: pointer">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -118,3 +80,30 @@
     <!-- End Wishlist -->
 
 @endsection
+
+@push('jQuery-Ajax')
+    <script src="{{asset('jquery-2.2.4.js')}}" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        (function () {
+            $('td#remove').click(function (event) {
+                var product_id = $(this).attr('data-id');
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: '{{url('/remove-from-wishlist')}}',
+                    type: 'POST',
+                    data: {_token: CSRF_TOKEN, id: product_id},
+                    success: function (message) {
+                        alert(message);
+                        location.reload();
+                    },
+                    error: function (error) {
+                        alert("Something wrong happened, If you aren't signed in, then you should sign in first!");
+                    }
+                })
+                event.preventDefault();
+            });
+        })();
+    </script>
+@endpush

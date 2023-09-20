@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Lists;
 
+use App\ECommerce\Static\Models\Paragraph;
+use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +23,11 @@ class CartController extends Controller
             ->join('products', 'id', '=', 'product_id')
             ->where('client_id', '=', Auth::id())->get();
 
-        return view('Web.Lists.cart', compact('cartItems'));
+        $webImages = WebImage::all();
+        $webParagraphs = Paragraph::all();
+        $contactDetails = ContactUs::first();
+
+        return view('Web.Lists.cart', compact('cartItems', 'webImages', 'webParagraphs', 'contactDetails'));
     }
 
     /*
@@ -40,8 +47,8 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $cart = Cart::where('client_id', Auth::id())
-            ->where('product_id', $request->product_id)
-            ->first();
+                ->where('product_id', $request->product_id)
+                ->first();
 
         if ($cart) {
             echo 'Warning: Already in your cart';

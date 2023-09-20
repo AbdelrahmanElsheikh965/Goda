@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label> Cover Image </label>
                             <input type="file" name="cover_image" class="form-control">
-                            <label> 3 Optional Slides Images </label>
+                            <label> 2 Optional Slides Images </label>
                             <input type="file" name="images[]" class="form-control" multiple>
                         </div>
 

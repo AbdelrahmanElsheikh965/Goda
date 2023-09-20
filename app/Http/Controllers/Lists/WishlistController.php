@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Lists;
 
+use App\ECommerce\Static\Models\Paragraph;
+use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +15,16 @@ class WishlistController extends Controller
 {
     public function wishlists()
     {
-        return view('Web.Lists.wishlist');
+        $webImages = WebImage::all();
+        $webParagraphs = Paragraph::all();
+        $contactDetails = ContactUs::first();
+
+        return view('Web.Lists.wishlist',
+            [
+                'webImages'      => $webImages,
+                'webParagraphs'  => $webParagraphs,
+                'contactDetails' => $contactDetails
+            ]);
     }
 
     /*
@@ -20,13 +32,21 @@ class WishlistController extends Controller
      */
     public function wishlist()
     {
+        $webImages = WebImage::all();
+        $webParagraphs = Paragraph::all();
+        $contactDetails = ContactUs::first();
         # For faster loading use query builder and select only required columns.
-        $wishlistItems = DB::table('wishlists')->select(['product_id', 'name', 'price'])
-            ->join('products', 'id', '=', 'product_id')
-            ->join('images', 'id', '=', 'product_id')
+        $wishlistItems = DB::table('wishlists')->select(['products.id', 'products.name', 'products.cover_image', 'products.price', 'products.discount'])
+            ->join('products', 'product_id', '=', 'id')
             ->where('client_id', '=', Auth::id())->get();
 
-        return view('Web.Lists.wishlist', compact('wishlistItems'));
+//        dd($wishlistItems);
+        return view('Web.Lists.wishlist',
+            [
+                'webImages'      => $webImages,
+                'webParagraphs'  => $webParagraphs,
+                'contactDetails' => $contactDetails
+            ], compact('wishlistItems'));
     }
 
     /*
@@ -35,7 +55,7 @@ class WishlistController extends Controller
     public function removeFromWishlist(Request $request)
     {
         DB::table('wishlists')->where('client_id', '=', Auth::id())
-            ->where('product_id', '=', $request->product_id)->delete();
+            ->where('product_id', '=', $request->id)->delete();
         echo 'Removed Successfully';
     }
 
@@ -44,14 +64,16 @@ class WishlistController extends Controller
      */
     public function addToWishlist(Request $request)
     {
-        $cart = Wishlist::where('product_id', $request->id)->first();
+        $wishlist = Wishlist::where('client_id', Auth::id())
+                            ->where('product_id', $request->product_id)
+                            ->first();
 
-        if ($cart) {
+        if ($wishlist) {
             echo 'Warning: Already in your wishlist';
         } else {
             Wishlist::create([
                 'client_id' => Auth::id(),
-                'product_id' => $request->id
+                'product_id' => $request->product_id
             ]);
             echo 'Done added to your wishlist';
         }

@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\ECommerce\Shared\Helpers\Helper;
 use App\ECommerce\Static\Models\Paragraph;
-use App\Models\Place;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ParagraphSeeder extends Seeder
