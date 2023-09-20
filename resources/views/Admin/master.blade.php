@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     @stack('meta-token')
-    <title>Goda Store Admin | Panel</title>
+    <title>Goda Store Admin | Portal</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -67,10 +67,26 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-right">
-                                    <form id="logout-form" action="" method="POST" class="d-none">
+                                    <form id="logout-form" action="" method="get" class="d-none">
                                         @csrf
                                         <button class="btn btn-default btn-flat">Sign out</button>
                                     </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{asset('adminAssets/img/mainadmin.png')}}" class="user-image" alt="User Image">
+                            <span class="hidden-xs">Goda Store Owner</span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-right">
+                                    <a href="{{url('user/signout')}}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>

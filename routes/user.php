@@ -20,6 +20,9 @@ Route::group([
 ], function () {
 
     Route::get('/', 'MainController@index');
+    Route::get('/signin', 'MainController@signIn');
+    Route::post('/authenticate', 'MainController@authenticate');
+    Route::get('/signout', 'MainController@signOut');
 
     Route::group(['prefix' => 'products'], function () {
         Route::get('/', 'ProductController@index');

@@ -6,7 +6,7 @@ namespace App\ECommerce\Client\Services;
 use App\ECommerce\Client\Emails\ResetPasswordEmail;
 use App\ECommerce\Client\Events\AccountCreatedEvent;
 use App\ECommerce\Client\Models\Client;
-use App\ECommerce\Client\Requests\LoginRequest;
+use App\ECommerce\Shared\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,10 +31,34 @@ class ClientAuthService
         event(new AccountCreatedEvent($client));
     }
 
+
     public function login()
     {
         return view('Web.Auth.login');
     }
+
+    public function authenticate(LoginRequest $request)
+    {
+        $credentials = [
+            'email' => request()->input('email'),
+            'password' => request()->input('password')
+        ];
+
+        if (auth()->attempt($credentials)) {
+
+            // Handle successful login
+            if (request()->filled('rememberMe')) {
+                $token = hash('sha256', Str::random(10));
+                auth()->user()->update(['remember_token' => $token]);
+                Cookie::queue('remember_token', $token, 2880);   // Save the cookie for 2 days. 60*24*2
+            }
+            Auth::login($request->user());  // It will last for 2 hours as SESSION_LIFETIME
+            return redirect(url('/'));
+        } else {
+            return redirect()->back()->with('error', 'Sorry invalid data');
+        }
+    }
+
 
     public function forgotPassword()
     {
@@ -68,6 +92,7 @@ class ClientAuthService
             return "Token expired try again " . " &nbsp; <a href='". url('/') ."'> Go Home </a>";
         }
     }
+
     public function updatePassword(Request $request)
     {
         $request->validate([
@@ -83,27 +108,6 @@ class ClientAuthService
         return redirect('/')->with('message', 'Password updated successfully');
     }
 
-    public function authenticate(LoginRequest $request)
-    {
-        $credentials = [
-            'email' => request()->input('email'),
-            'password' => request()->input('password')
-        ];
-
-        if (auth()->attempt($credentials)) {
-
-            // Handle successful login
-            if (request()->filled('rememberMe')) {
-                $token = hash('sha256', Str::random(10));
-                auth()->user()->update(['remember_token' => $token]);
-                Cookie::queue('remember_token', $token, 2880);   // Save the cookie for 2 days. 60*24*2
-            }
-            Auth::login($request->user());  // It will last for 2 hours as SESSION_LIFETIME
-            return redirect(url('/'));
-        } else {
-            return redirect()->back()->with('error', 'Sorry invalid data');
-        }
-    }
 
     public function logout()
     {

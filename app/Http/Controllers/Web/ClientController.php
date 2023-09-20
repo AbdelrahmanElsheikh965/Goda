@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\ECommerce\Client\Models\Client;
-use App\ECommerce\Client\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
 use App\ECommerce\Client\Services\ClientAuthService;
+use App\ECommerce\Shared\Requests\LoginRequest;
 use App\ECommerce\Static\Models\Paragraph;
 use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
@@ -30,6 +30,7 @@ class ClientController extends Controller
             'contactDetails' => $contactDetails
         ]);
     }
+
     public function register()
     {
         return $this->clientAuthService->register();
@@ -41,10 +42,24 @@ class ClientController extends Controller
         return redirect(url('/'));
     }
 
+    public function verify($email)
+    {
+        Client::where('email', $email)->first()
+            ->update(['email_verified_at' => Carbon::now('GMT+3')->toDateTimeString()]);
+        return redirect('/');
+    }
+
+
     public function login()
     {
         return $this->clientAuthService->login();
     }
+
+    public function authenticate(LoginRequest $request)
+    {
+        return $this->clientAuthService->authenticate($request);
+    }
+
 
     public function forgotPassword()
     {
@@ -66,22 +81,12 @@ class ClientController extends Controller
         return $this->clientAuthService->emailViewForm($email);
     }
 
+
     public function logout()
     {
         return $this->clientAuthService->logout();
     }
 
-    public function authenticate(LoginRequest $request)
-    {
-        return $this->clientAuthService->authenticate($request);
-    }
-
-    public function verify($email)
-    {
-        Client::where('email', $email)->first()
-            ->update(['email_verified_at' => Carbon::now('GMT+3')->toDateTimeString()]);
-        return redirect('/');
-    }
 
     public function profile()
     {

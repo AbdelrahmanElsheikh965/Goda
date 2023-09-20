@@ -57,7 +57,7 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{url('/about-us')}}">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" target="_blank" href="{{url('contact-us')}}">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('contact-us')}}">Contact Us</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
