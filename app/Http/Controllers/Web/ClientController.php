@@ -6,8 +6,10 @@ use App\ECommerce\Client\Models\Client;
 use App\ECommerce\Client\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
 use App\ECommerce\Client\Services\ClientAuthService;
+use App\ECommerce\Static\Models\Paragraph;
 use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
 use Carbon\Carbon;
 
 class ClientController extends Controller
@@ -18,7 +20,14 @@ class ClientController extends Controller
     public function index()
     {
         $webImages = WebImage::all();
-        return view('Web.index', ['webImages' => $webImages]);
+        $webParagraphs = Paragraph::all();
+        $contactDetails = ContactUs::first();
+
+        return view('Web.index', [
+            'webImages'      => $webImages,
+            'webParagraphs'  => $webParagraphs,
+            'contactDetails' => $contactDetails
+        ]);
     }
     public function register()
     {

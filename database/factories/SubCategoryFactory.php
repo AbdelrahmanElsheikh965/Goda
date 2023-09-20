@@ -20,6 +20,7 @@ class SubCategoryFactory extends Factory
         $categoriesIDs = Category::pluck('id');
         return [
             'name'          => fake()->word(),
+            'image'          => fake()->word() . fake()->randomElement(['.jpg', '.jpeg', '.png']),
             'category_id'   => fake()->randomElement($categoriesIDs)
         ];
     }

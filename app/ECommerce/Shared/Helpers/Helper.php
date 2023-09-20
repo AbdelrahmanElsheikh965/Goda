@@ -3,7 +3,7 @@
 namespace App\ECommerce\Shared\Helpers;
 
 use App\ECommerce\Product\Models\Product;
-use App\Models\Image;
+use App\Models\Place;
 use Illuminate\Support\Facades\DB;
 
 class Helper
@@ -53,6 +53,11 @@ class Helper
         echo ($count === true)
             ? json_encode([ 'data' => $data, "num" => count($data)])
             : json_encode([ 'data' => $data ]);
+    }
+
+    public static function getIdOfPlaceByName($name)
+    {
+        return Place::where('name', $name)->pluck('id')[0];
     }
 
 }

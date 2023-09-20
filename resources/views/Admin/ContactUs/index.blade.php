@@ -32,7 +32,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label> Email </label>
-                                    <input type="text" name="email" class="form-control" value="{{@$data->email}}">
+                                    <input type="email" name="email" class="form-control" value="{{@$data->email}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Facebook Link </label>
+                                    <input type="text" name="fb_link" class="form-control" value="{{@$data->fb_link}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Whatsapp Number </label>
+                                    <input type="text" name="wa_link" class="form-control" value="{{@$data->wa_link}}">
                                 </div>
                                 <button type="submit" class="btn btn-warning"> Update </button>
                             </div>

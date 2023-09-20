@@ -48,7 +48,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="{{asset('images/neghw.jpg')}}" class="logo" alt=""></a>
+{{--                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/logo.jpg')}}" class="logo" alt=""></a>--}}
             </div>
             <!-- End Header Navigation -->
 
@@ -56,7 +56,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('/about-us')}}">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" target="_blank" href="{{url('contact-us')}}">Contact Us</a></li>
                 </ul>
             </div>
@@ -141,13 +141,13 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget">
-                        <h4>About Goda</h4>
+                        <h4> {{ $webParagraphs[3]->title}} </h4>
                         <p>
-                            We are passionate about doing our part to make life better. We provide high-quality products, great value, and exceptional customer service. We connect people with products and services in new and unexpected ways. You can reach us through these social links.
+                            {{ $webParagraphs[3]->body}}
                         </p>
                         <ul>
-                            <li><a href=""><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="https://wa.me/+20"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            <li><a href="{{$contactDetails->fb_link}}"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://wa.me/{{$contactDetails->wa_link}}"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -155,8 +155,8 @@
                     <div class="footer-link">
                         <h4>Information</h4>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="{{url('about-us')}}">About Us</a></li>
+{{--                            <li><a href="#">Our Sitemap</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -165,13 +165,13 @@
                         <h4>Contact Us</h4>
                         <ul>
                             <li>
-                                <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                <p><i class="fas fa-map-marker-alt"></i>Address: {{$contactDetails->address}} </p>
                             </li>
                             <li>
-                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770"> {{$contactDetails->phone}} </a></p>
                             </li>
                             <li>
-                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com"> {{$contactDetails->email}} </a></p>
                             </li>
                         </ul>
                     </div>

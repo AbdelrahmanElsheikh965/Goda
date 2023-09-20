@@ -23,15 +23,11 @@ class ContactUsController extends Controller
 
     public function update(Request $request)
     {
-        $messages = ['email.email'   => 'Please type a real valid email address'];
-        $request->validate([
-            'address'   => 'sometimes',
-            'phone'     => 'sometimes|string',
-            'email'     => 'email:rfc,dns'
-        ], $messages);
+        $messages = ['fb_link.url' => 'Please type a real valid url address'];
+        $request->validate(['fb_link' => 'url'], $messages);
 
         $this->contactInfo->update($request->all());
-        event(new ContactUsDataChanged($request->except('_token', '_method')));
+//        event(new ContactUsDataChanged($request->except('_token', '_method')));
         return redirect('user/contact-us');
     }
 

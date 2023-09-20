@@ -1,5 +1,8 @@
 <?php
 
+use App\ECommerce\Static\Models\Paragraph;
+use App\ECommerce\Static\Models\WebImage;
+use App\Models\ContactUs;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,6 +38,27 @@ Route::group([
 });
 
 Route::get('contact-us', function (){
-    return view('Web.Static.contact-us');
+    $webImages = WebImage::all();
+    $webParagraphs = Paragraph::all();
+    $contactDetails = ContactUs::first();
+
+    return view('Web.Static.contact-us', [
+        'webImages'      => $webImages,
+        'webParagraphs'  => $webParagraphs,
+        'contactDetails' => $contactDetails
+    ]);
+
+});
+
+Route::get('about-us', function (){
+    $webImages = WebImage::all();
+    $webParagraphs = Paragraph::all();
+    $contactDetails = ContactUs::first();
+
+    return view('Web.Static.about-us', [
+        'webImages'      => $webImages,
+        'webParagraphs'  => $webParagraphs,
+        'contactDetails' => $contactDetails
+    ]);
 });
 

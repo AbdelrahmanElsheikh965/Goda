@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
+            $table->string('fb_link', 255);
+            $table->string('wa_link', 50);
             $table->timestamps();
         });
     }

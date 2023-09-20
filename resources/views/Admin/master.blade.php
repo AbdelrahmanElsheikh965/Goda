@@ -145,6 +145,20 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{url('user/paragraphs')}}">
+                        <i class="fa fa-paragraph"></i> <span>Paragraphs</span>
+                        <span class="pull-right-container"> </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('user/web-images')}}">
+                        <i class="fa fa-image"></i> <span>Web Images</span>
+                        <span class="pull-right-container"> </span>
+                    </a>
+                </li>
+
             </ul>
         </section>
         <!-- /.sidebar -->

@@ -11,8 +11,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Goda Store </strong></h1>
-                        <p class="m-b-40">Click the button below to see how your our products will make you <br> amazed and willing to visit us as soon as possible.</p>
+                        <h1 class="m-b-20"><strong> {{$webParagraphs[0]->title}} </strong></h1>
+                        <p class="m-b-40"> {{ $webParagraphs[0]->body}} </p>
                         <p><a class="btn hvr-hover" href="{{url('products/')}}">Let's Get Started</a></p>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>This is <br> Goda Store</strong></h1>
-                        <p class="m-b-40">We got very high-quality products with challenging prices <br> Visit us to be pleased and satisfied with our products.</p>
+                        <h1 class="m-b-20"><strong> {{$webParagraphs[1]->title}} </strong></h1>
+                        <p class="m-b-40"> {{$webParagraphs[1]->body}} </p>
                         <p><a class="btn hvr-hover" href="{{url('products')}}">Click to visit</a></p>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Visit Us </strong></h1>
-                        <p class="m-b-40">The craziest offers and sales you can imagine you'll see here <br> Invite your friends and come to the place.</p>
+                        <h1 class="m-b-20"><strong> {{$webParagraphs[2]->title}} </strong></h1>
+                        <p class="m-b-40"> {{$webParagraphs[2]->body}} </p>
                         <p><a class="btn hvr-hover" href="{{url('products')}}">Go shopping now</a></p>
                     </div>
                 </div>
@@ -59,6 +59,10 @@
                     <img class="img-fluid" src="images/sports_shoes.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Sports</a>
                 </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="images/sports_shoes.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Kids Bags</a>
+                </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
@@ -66,7 +70,7 @@
                     <a class="btn hvr-hover" href="#">Kids Shoes</a>
                 </div>
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="images/Inkedwomen_bag.jpg" alt="" />
+                    <img class="img-fluid" src="images/women-bag-imgl.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Women Bags</a>
                 </div>
             </div>
@@ -74,6 +78,10 @@
                 <div class="shop-cat-box">
                     <img class="img-fluid" src="images/Men_shoes.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Men Shoes</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="images/Men_shoes.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Slippers</a>
                 </div>
             </div>
         </div>

@@ -17,9 +17,11 @@ class ContactUsFactory extends Factory
     public function definition(): array
     {
         return [
-            'address'  => fake()->unique()->streetAddress(),
-            'phone'  => fake()->unique()->phoneNumber(),
-            'email'  => fake()->unique()->safeEmail()
+            'address'   => fake()->unique()->streetAddress(),
+            'phone'     => fake()->unique()->phoneNumber(),
+            'email'     => fake()->unique()->safeEmail(),
+            'fb_link'   => fake()->url(),
+            'wa_link'   => fake()->phoneNumber(),
         ];
     }
 }
