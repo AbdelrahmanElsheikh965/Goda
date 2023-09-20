@@ -11,6 +11,7 @@ use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
 use App\Models\ContactUs;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -43,6 +44,26 @@ class ClientController extends Controller
     public function login()
     {
         return $this->clientAuthService->login();
+    }
+
+    public function forgotPassword()
+    {
+        return $this->clientAuthService->forgotPassword();
+    }
+
+    public function resetPassword(Request $request)
+    {
+        return $this->clientAuthService->resetPassword($request);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        return $this->clientAuthService->updatePassword($request);
+    }
+
+    public function emailViewForm($email)
+    {
+        return $this->clientAuthService->emailViewForm($email);
     }
 
     public function logout()

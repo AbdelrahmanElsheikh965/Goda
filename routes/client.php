@@ -21,9 +21,12 @@ Route::group([
     Route::get('/login', 'login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
 
-    // TODO: Forgot password route + functionality.
-    Route::get('/logout', 'logout');
+    Route::get('/forgot-password', 'forgotPassword')->name('forgot-password');
+    Route::post('/reset-password/{update?}', 'resetPassword')->name('reset-password');
+    Route::get('/update-password-view/{email}', 'emailViewForm')->name('update-password-view');
+    Route::post('/update-password', 'updatePassword')->name('update-password');
 
+    Route::get('/logout', 'logout');
 });
 
 Route::group([

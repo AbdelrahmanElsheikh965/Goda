@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title> Gouda Store | Login </title>
+    <title> Goda Store | Forgot Password </title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2> Login </h2>
+                <h2> Reset password </h2>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
 
             <div class="col-lg-8 col-sm-12">
                 <div class="contact-form-right">
-                    <h2> Sign in to your account </h2> <br>
+                    <h2> O0ps you forgot your password! </h2> <br>
                     <form method="post">
                         @csrf
                         @include('Helpers_Views.errors')
@@ -96,26 +96,20 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="email" placeholder="Your email">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="name" name="password" placeholder="Your password">
+                                    <b> Forgot your password? No problem.
+                                        Just let us know your email address and we will email you a password reset link that will allow you to choose a new one. </b>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="checkbox" name="rememberMe"> Remember Me
+                                    <input type="email" class="form-control" id="name" name="email" placeholder="Your email">
+                                </div>
+                            </div>
 
-                                    <a style="float: right" href="{{url('/forgot-password')}}"> Forgot your password? </a>
-                                </div>
-                                <div class="form-group">
-                                    <b>Don't have an account? </b> <a href="{{url('/register')}}"> <u> Register now </u> </a>
-                                </div>
+                            <div class="col-md-12">
                                 <div class="submit-button text-center">
-                                    <button class="btn hvr-hover" id="submit" formmethod="post" formaction="{{url('/authenticate')}}" type="submit"> Authenticate </button>
+                                    <button class="btn hvr-hover" id="submit" formmethod="post" formaction="{{url('/reset-password')}}" type="submit"> Send Me Reset Link </button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     <div class="clearfix"></div>
                                 </div>

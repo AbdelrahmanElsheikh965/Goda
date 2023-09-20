@@ -11,16 +11,17 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use function Monolog\toArray;
 
-class NewAccountEmail extends Mailable
+class ResetPasswordEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private Client $client;
     /**
      * Create a new message instance.
      */
-    public function __construct(public Client $client)
+    public function __construct($email, public $token)
     {
-        //
+        $this->client = Client::where('email', $email)->first();
     }
 
     /**
@@ -46,8 +47,11 @@ class NewAccountEmail extends Mailable
     public function build()
     {
         return $this
-            ->subject('Thank you for registering to Gouda Store')
-            ->markdown('Web.Auth.verify', ['client' => $this->client]);
+            ->subject('Here are you the link for resetting your password')
+            ->markdown('Web.Auth.reset', [
+                'client' => $this->client,
+                'token'  => $this->token
+            ]);
     }
     /**
      * Get the attachments for the message.

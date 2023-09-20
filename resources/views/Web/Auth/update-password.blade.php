@@ -10,23 +10,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title> Gouda Store | Login </title>
+    <title> Gouda Store | Update Password </title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -47,7 +47,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+                <a class="navbar-brand" href="index.html"><img src="{{asset('images/logo.png')}}" class="logo" alt=""></a>
             </div>
             <!-- End Header Navigation -->
         </div>
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2> Login </h2>
+                <h2> Update password </h2>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
 
             <div class="col-lg-8 col-sm-12">
                 <div class="contact-form-right">
-                    <h2> Sign in to your account </h2> <br>
+                    <h2> Update your password! </h2> <br>
                     <form method="post">
                         @csrf
                         @include('Helpers_Views.errors')
@@ -96,26 +96,28 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="email" placeholder="Your email">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="name" name="password" placeholder="Your password">
+                                    <b> Type and Re-Type the new password. </b>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="checkbox" name="rememberMe"> Remember Me
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email">
+                                </div>
 
-                                    <a style="float: right" href="{{url('/forgot-password')}}"> Forgot your password? </a>
-                                </div>
                                 <div class="form-group">
-                                    <b>Don't have an account? </b> <a href="{{url('/register')}}"> <u> Register now </u> </a>
+                                    <input type="password" class="form-control" name="password" placeholder="Your password">
                                 </div>
+
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password_confirmation" placeholder="Retype Your password">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
                                 <div class="submit-button text-center">
-                                    <button class="btn hvr-hover" id="submit" formmethod="post" formaction="{{url('/authenticate')}}" type="submit"> Authenticate </button>
+                                    <button class="btn hvr-hover" id="submit" formmethod="post" formaction="{{url('/update-password')}}" type="submit"> Update </button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -195,21 +197,22 @@
 <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
 <!-- ALL JS FILES -->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('js/popper.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- ALL PLUGINS -->
-<script src="js/jquery.superslides.min.js"></script>
-<script src="js/bootstrap-select.js"></script>
-<script src="js/inewsticker.js"></script>
-<script src="js/bootsnav.js."></script>
-<script src="js/images-loded.min.js"></script>
-<script src="js/isotope.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/baguetteBox.min.js"></script>
-<script src="js/form-validator.min.js"></script>
-<script src="js/contact-form-script.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{asset('js/jquery.superslides.min.js')}}"></script>
+<script src="{{asset('js/bootstrap-select.js')}}"></script>
+<script src="{{asset('js/inewsticker.js')}}"></script>
+<script src="{{asset('js/bootsnav.js')}}"></script>
+<script src="{{asset('js/images-loded.min.js')}}"></script>
+<script src="{{asset('js/isotope.min.js')}}"></script>
+<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/baguetteBox.min.js')}}"></script>
+<script src="{{asset('js/form-validator.min.js')}}"></script>
+<script src="{{asset('js/contact-form-script.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
+
 </body>
 
 </html>
