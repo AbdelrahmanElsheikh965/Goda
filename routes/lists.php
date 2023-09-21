@@ -12,6 +12,9 @@ Route::group([
     Route::post('/add-to-cart', 'CartController@addToCart');
     Route::post('/remove-from-cart', 'CartController@removeFromCart');
 
+    Route::get('/checkout-view', 'StripeController@checkout');
+    Route::post('/pay', 'StripeController@pay')->name('pay');
+
     Route::get('/wishlist', 'WishlistController@wishlist');
     Route::post('/add-to-wishlist', 'WishlistController@addToWishlist');
     Route::post('/remove-from-wishlist', 'WishlistController@removeFromWishlist');

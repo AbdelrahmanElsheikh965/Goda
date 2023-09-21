@@ -23,6 +23,22 @@ class CartController extends Controller
             ->join('products', 'id', '=', 'product_id')
             ->where('client_id', '=', Auth::id())->get();
 
+        $sum = 0;
+        $data = array();
+
+        if (count($cartItems) > 0)
+        {
+            // Calculate each product total price (price * quantity).
+            foreach ($cartItems as $item)
+            {
+                $total = ($item->discount) ? ($item->price - ($item->price * $item->discount)) * $item->quantity : $item->price * $item->quantity;
+                $data['products'][$item->id] = [$item->quantity, $total];
+                $sum += $total;
+            }
+            $data['sum'] = $sum;
+            session()->put('data', $data);
+        }
+
         $webImages = WebImage::all();
         $webParagraphs = Paragraph::all();
         $contactDetails = ContactUs::first();

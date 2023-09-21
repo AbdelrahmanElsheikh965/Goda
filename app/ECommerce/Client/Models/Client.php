@@ -24,4 +24,9 @@ class Client extends Authenticatable
 //        $this->attributes['password'] = Hash::make($value);
 //    }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
 }

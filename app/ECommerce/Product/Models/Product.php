@@ -22,6 +22,11 @@ class Product extends Model
         return $this->hasMany('App\Models\Image');
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order')->withPivot(['quantity', 'product_total_price']);
+    }
+
     public function related(Product $product)
     {
         return [
