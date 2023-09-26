@@ -7,10 +7,7 @@ use App\ECommerce\Client\Requests\RegisterRequest;
 use App\ECommerce\Client\Services\ClientAuthService;
 use App\ECommerce\Product\Models\Product;
 use App\ECommerce\Shared\Requests\LoginRequest;
-use App\ECommerce\Static\Models\Paragraph;
-use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
-use App\Models\ContactUs;
 use App\Models\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,16 +19,10 @@ class ClientController extends Controller
 
     public function index()
     {
-        $webImages = WebImage::all();
-        $webParagraphs = Paragraph::all();
-        $contactDetails = ContactUs::first();
         $subCategories = SubCategory::take(6)->get();
         $latestProducts = Product::latest('created_at')->take(4)->get();
 
         return view('Web.index', [
-            'webImages'      => $webImages,
-            'webParagraphs'  => $webParagraphs,
-            'contactDetails' => $contactDetails,
             'subCategories'  => $subCategories,
             'latestProducts'  => $latestProducts
         ]);

@@ -24,7 +24,7 @@ class WebImageRepository extends StaticRepository
     {
         foreach ($data as $key => $value)
         {
-            Helper::save($value, 'app/public/AdminImages');
+            Helper::save($value, 'AdminImages');
             $this->getModel()::find($key)->update([
                     'image' => $value->getClientOriginalName()
                 ]);

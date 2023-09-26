@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\Lists;
 
-use App\ECommerce\Static\Models\Paragraph;
-use App\ECommerce\Static\Models\WebImage;
 use App\Http\Controllers\Controller;
-use App\Models\ContactUs;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,16 +12,7 @@ class WishlistController extends Controller
 {
     public function wishlists()
     {
-        $webImages = WebImage::all();
-        $webParagraphs = Paragraph::all();
-        $contactDetails = ContactUs::first();
-
-        return view('Web.Lists.wishlist',
-            [
-                'webImages'      => $webImages,
-                'webParagraphs'  => $webParagraphs,
-                'contactDetails' => $contactDetails
-            ]);
+        return view('Web.Lists.wishlist');
     }
 
     /*
@@ -32,21 +20,12 @@ class WishlistController extends Controller
      */
     public function wishlist()
     {
-        $webImages = WebImage::all();
-        $webParagraphs = Paragraph::all();
-        $contactDetails = ContactUs::first();
         # For faster loading use query builder and select only required columns.
         $wishlistItems = DB::table('wishlists')->select(['products.id', 'products.name', 'products.cover_image', 'products.price', 'products.discount'])
             ->join('products', 'product_id', '=', 'id')
             ->where('client_id', '=', Auth::id())->get();
 
-//        dd($wishlistItems);
-        return view('Web.Lists.wishlist',
-            [
-                'webImages'      => $webImages,
-                'webParagraphs'  => $webParagraphs,
-                'contactDetails' => $contactDetails
-            ], compact('wishlistItems'));
+        return view('Web.Lists.wishlist', compact('wishlistItems'));
     }
 
     /*
@@ -65,8 +44,8 @@ class WishlistController extends Controller
     public function addToWishlist(Request $request)
     {
         $wishlist = Wishlist::where('client_id', Auth::id())
-                            ->where('product_id', $request->product_id)
-                            ->first();
+            ->where('product_id', $request->product_id)
+            ->first();
 
         if ($wishlist) {
             echo 'Warning: Already in your wishlist';

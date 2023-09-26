@@ -26,10 +26,10 @@
                                 <p><i class="fas fa-map-marker-alt"></i>Address: {{$contactDetails->address}} </p>
                             </li>
                             <li>
-                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770"> {{$contactDetails->phone}} </a></p>
+                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:{{$contactDetails->phone}}"> {{$contactDetails->phone}} </a></p>
                             </li>
                             <li>
-                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com"> {{$contactDetails->email}} </a></p>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:{{$contactDetails->email}}"> {{$contactDetails->email}} </a></p>
                             </li>
                         </ul>
                     </div>

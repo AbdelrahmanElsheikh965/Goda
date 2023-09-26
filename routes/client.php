@@ -1,14 +1,6 @@
 <?php
 
-use App\ECommerce\Static\Models\Paragraph;
-use App\ECommerce\Static\Models\WebImage;
-use App\Models\ContactUs;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-$webImages = WebImage::all();
-$webParagraphs = Paragraph::all();
-$contactDetails = ContactUs::first();
 
 Route::group([
     'namespace'     => 'App\Http\Controllers\Web',
@@ -42,22 +34,10 @@ Route::group([
 
 });
 
-Route::get('contact-us', function () use ($webImages, $webParagraphs, $contactDetails){
-
-    return view('Web.Static.contact-us', [
-        'webImages'      => $webImages,
-        'webParagraphs'  => $webParagraphs,
-        'contactDetails' => $contactDetails
-    ]);
-
+Route::get('contact-us', function (){
+    return view('Web.Static.contact-us');
 });
 
-Route::get('about-us', function () use ($webImages, $webParagraphs, $contactDetails){
-
-    return view('Web.Static.about-us', [
-        'webImages'      => $webImages,
-        'webParagraphs'  => $webParagraphs,
-        'contactDetails' => $contactDetails
-    ]);
+Route::get('about-us', function () {
+    return view('Web.Static.about-us');
 });
-

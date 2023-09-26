@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
+use App\ECommerce\Shared\Helpers\SharedData;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+        SharedData::getInstance()->HandleAllSharedData();
     }
 }

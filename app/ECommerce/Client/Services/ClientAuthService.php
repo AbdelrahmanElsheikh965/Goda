@@ -8,9 +8,6 @@ use App\ECommerce\Client\Events\AccountCreatedEvent;
 use App\ECommerce\Client\Models\Client;
 use App\ECommerce\Shared\Requests\LoginRequest;
 use App\ECommerce\Client\Requests\RegisterRequest;
-use App\ECommerce\Static\Models\Paragraph;
-use App\ECommerce\Static\Models\WebImage;
-use App\Models\ContactUs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,17 +24,8 @@ class ClientAuthService
         if(auth()->check()) {
             return redirect('/');
         }else{
-            $webImages = WebImage::all();
-            $webParagraphs = Paragraph::all();
-            $contactDetails = ContactUs::first();
-            return view('Web.Auth.register',
-                [
-                    'webImages'      => $webImages,
-                    'webParagraphs'  => $webParagraphs,
-                    'contactDetails' => $contactDetails
-                ]);
+            return view('Web.Auth.register');
         }
-
     }
 
     public function store(RegisterRequest $request)
@@ -53,17 +41,8 @@ class ClientAuthService
         if(auth()->check()){
             return redirect('/');
         }else{
-            $webImages = WebImage::all();
-            $webParagraphs = Paragraph::all();
-            $contactDetails = ContactUs::first();
-            return view('Web.Auth.login',
-                [
-                    'webImages'      => $webImages,
-                    'webParagraphs'  => $webParagraphs,
-                    'contactDetails' => $contactDetails
-                ]);
+            return view('Web.Auth.login');
         }
-
     }
 
     public function authenticate(LoginRequest $request)
@@ -94,18 +73,8 @@ class ClientAuthService
         if(auth()->check()) {
             return redirect('/');
         }else{
-            $webImages = WebImage::all();
-            $webParagraphs = Paragraph::all();
-            $contactDetails = ContactUs::first();
-
-            return view('Web.Auth.forgot-password',
-                [
-                    'webImages'      => $webImages,
-                    'webParagraphs'  => $webParagraphs,
-                    'contactDetails' => $contactDetails
-                ]);
+            return view('Web.Auth.forgot-password');
         }
-
     }
 
     public function resetPassword(Request $request)
@@ -125,21 +94,12 @@ class ClientAuthService
 
     public function emailViewForm($email)
     {
-        $webImages = WebImage::all();
-        $webParagraphs = Paragraph::all();
-        $contactDetails = ContactUs::first();
-
         $passwordResetRow = DB::table('password_reset_tokens')
             ->select('expires_at')
             ->where('email', '=', base64_decode($email))->first()->expires_at;
 
         if (Carbon::now('GMT+3')->toDateTimeString() < $passwordResetRow) {
-            return view('Web.Auth.update-password',
-                [
-                    'webImages'      => $webImages,
-                    'webParagraphs'  => $webParagraphs,
-                    'contactDetails' => $contactDetails
-                ]);
+            return view('Web.Auth.update-password');
         } else {
             return "Token expired try again " . " &nbsp; <a href='". url('/') ."'> Go Home </a>";
         }
@@ -156,7 +116,6 @@ class ClientAuthService
         $client->update([
             'password' => Hash::make($request->password)
         ]);
-
         return redirect('/')->with('message', 'Password updated successfully');
     }
 
