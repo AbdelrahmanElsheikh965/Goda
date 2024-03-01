@@ -1,6 +1,5 @@
 # Real-Ecommerce
 
-Live link: https://goda.great-site.net
 ## Overview
 This is an e-commerce app for specific types of vendors (Footwear and bags). It has a web interface for the client to deal with products and get more information about the store in addition to an admin interface (dashboard) for creating, viewing, updating, or removing these products and managing other stuff.
 
