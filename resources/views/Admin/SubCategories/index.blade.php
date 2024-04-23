@@ -34,7 +34,7 @@
                         <tr>
                             <td> {{$loop->iteration}} </td>
                             <td> {{$subCategory->name}} </td>
-                            <td> {{$subCategory->image}} </td>
+                            <td width="150px"> <img src="{{$subCategory->image}}" width="100px" height="90px"> </td>
                             <td> {{$subCategory->category->name}} </td>
                             <td style="text-align: center"> <a href="{{ url('user/sub-categories/edit',[$subCategory->id]) }}" class="btn btn-xs btn-warning fa fa-pencil"> Edit </a> </td>
                             <form action="{{ url('user/sub-categories/delete',[$subCategory->id]) }}" method="post">

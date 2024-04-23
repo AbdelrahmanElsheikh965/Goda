@@ -12,7 +12,7 @@
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-left">
-                <img src="{{asset('AdminImages/'.$webImages[0]->image)}}" loading="lazy" alt="">
+                <img src="{{ $webImages[0]->image }}" loading="lazy" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -24,7 +24,7 @@
                 </div>
             </li>
             <li class="text-center">
-                <img src="{{asset('AdminImages/'.$webImages[1]->image)}}" loading="lazy" alt="">
+                <img src="{{ $webImages[1]->image }}" loading="lazy" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -37,7 +37,7 @@
             </li>
 
             <li class="text-right">
-                <img src="{{asset('AdminImages/'.$webImages[2]->image)}}" loading="lazy" alt="">
+                <img src="{{ $webImages[2]->image }}" loading="lazy" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -65,12 +65,12 @@
                     @for($i=0; $i < $subCategories->count(); $i+=2)
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="shop-cat-box">
-                                <img class="img-fluid" src="{{asset('admin/subCategories/' . $subCategories[$i]->image )}}" alt="" />
+                                <img class="img-fluid" src="{{ $subCategories[$i]->image }}" alt="" />
                                 <a class="btn hvr-hover" href="#">{{$subCategories[$i]->name}}</a>
                             </div>
                             @if($i+1 < $subCategories->count())
                                 <div class="shop-cat-box">
-                                    <img class="img-fluid" src="{{asset('admin/subCategories/' . $subCategories[$i+1]->image )}}" alt="" />
+                                    <img class="img-fluid" src="{{ $subCategories[$i+1]->image }}" alt="" />
                                     <a class="btn hvr-hover" href="#"> {{$subCategories[$i+1]->name}} </a>
                                 </div>
                             @endif
@@ -110,7 +110,7 @@
                                 <div class="type-lb">
                                     @if($product->discount) <p class="sale">Sale</p> @endif
                                 </div>
-                                <img src="{{asset('images/'.$product->cover_image)}}" class="img-fluid" alt="Image">
+                                <img src="{{ $product->cover_image }}" class="img-fluid" alt="Image">
                                 <div class="mask-icon">
                                     <ul>
                                         <li><a href="{{route('products.show', $product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

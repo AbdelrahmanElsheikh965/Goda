@@ -19,7 +19,7 @@ class UserProductRepository implements UserProductInterface
     {
         // TODO: Create a scheduled job that checks and deletes all images of deleted products every day.
         $data['size']           = explode(",", $data['size']);
-        $data['cover_image']    = $data['cover_image']->getClientOriginalName();
+        $data['cover_image']    = Helper::save($data['cover_image']);
         $product                = Product::create($data);
         ($product) ? session()->put('message', "Done") : session()->put('message', "Error");
 
@@ -33,11 +33,11 @@ class UserProductRepository implements UserProductInterface
     public function update(Product $product, array $data)
     {
         $handled = false;
-        ($data['cover_image']) ? Helper::save($data['cover_image']) : '';
+        $cover_image_db_value = ($data['cover_image']) ? Helper::save($data['cover_image']) : '';
         $updated = $product->update([
             "name"              => $data['data']['name'],
             "description"       => $data['data']['description'],
-            "cover_image"       => ($data['cover_image']?->getClientOriginalName()) ?? $product->cover_image,
+            "cover_image"       => $cover_image_db_value,
             "price"             => $data['data']['price'],
             "discount"          => $data['data']['discount'],
             "size"              => explode(",", $data['data']['size']) ,

@@ -33,7 +33,6 @@ class UserProductService
         ];
 
         $request->validate($rules);
-        Helper::save($request->file('cover_image'));
 
         if ($images = $request->file('images'))
         {
