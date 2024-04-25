@@ -43,3 +43,5 @@ php artisan storage:link
 **Finally** the project now is ready to run smoothly.
 
 > If you have any questions, suggestions or contributions do not hesitate to do so and you can contact me from links the overview tab :)
+>
+> Link up and running: http://goda.byethost14.com/
