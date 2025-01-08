@@ -84,7 +84,7 @@
                                                         @if($product->discount) <p class="sale">Sale</p> @endif
                                                     </div>
 
-                                                    <img src="{{ $product->cover_image }}" style=" width: 200px; height: 150px" class="img-fluid" alt="Image">
+                                                    <img src="{{asset('images/'.$product->cover_image)}}" style=" width: 200px; height: 150px" class="img-fluid" alt="Image">
                                                     <div class="mask-icon">
                                                         <ul>
                                                             <li><a href="{{route('products.show', $product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -103,13 +103,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @empty
+                                    @empty
                                         &nbsp; &nbsp; &nbsp;
                                         <div class="title-all text-center">
                                             <h2 style="text-align: center"> There's no P r o d u c t s. </h2>
                                         </div>
-                                        @endforelse
-                                    </div>
+                                    @endforelse
+                                </div>
                                 {{$data[0]->links()}}
                             </div>
                         </div>

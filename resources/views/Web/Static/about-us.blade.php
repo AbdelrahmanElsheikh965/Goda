@@ -27,7 +27,7 @@
                     <p> {{ $webParagraphs[4]->body }} </p>
                 </div>
                 <div class="col-lg-6">
-                    <div class="banner-frame"> <img class="img-thumbnail img-fluid" src="{{ $webImages[3]->image }}" alt="" />
+                    <div class="banner-frame"> <img class="img-thumbnail img-fluid" src="{{asset('AdminImages/'. $webImages[3]->image)}}" alt="" />
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ namespace App\ECommerce\Shared\Helpers;
 use App\ECommerce\Product\Models\Product;
 use App\Models\Place;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File;
 
 class Helper
 {
@@ -15,40 +15,43 @@ class Helper
     public static function getInstance()
     {
         // Applying singleton design pattern.
-        if (self::$instance === null) {
+        if (self::$instance === null)
+        {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    public static function save($image) 
+    public static function save($image, $path = '/images')  // 'app/public/images' => is the default path.
     {
-        $response = Http::withHeaders([
-            'authorization' => 'Client-ID ' . env('CLIENT_ID'),
-            'content-type' => 'application/x-www-form-urlencoded',
-        ])->send('POST', 'https://api.imgur.com/3/image', [
-            'form_params' => [
-                    'image' => base64_encode(file_get_contents($image))
-                ],
-            ]);
-        $responseLink = data_get(response()->json(json_decode(($response->getBody()->getContents())))->getData(), 'data.link');
-
-        return $responseLink;
-
+        if (! is_null($image) )
+        {
+            if (!File::isDirectory(public_path($path)))
+            {
+                File::makeDirectory(public_path($path), 0777, true);
+                $image->move(public_path($path), $image->getClientOriginalName());
+            }else
+            {
+                $image->move(public_path($path), $image->getClientOriginalName());
+            }
+        }
     }
 
     public function getSlidesNames($arrayImages)
     {
-        foreach ($arrayImages as $slide) {
-            $this->slidesNames[] = self::save($slide);
+        foreach ($arrayImages as $slide)
+        {
+            $this->slidesNames [] = $slide->getClientOriginalName();
+            self::save($slide);
         }
         return $this;
     }
 
     public function handleSlidesImagesWithDB(Product $product)
     {
-        foreach ($this->slidesNames as $oneSlide) {
-            $product->images()->updateOrCreate(['image'  => $oneSlide]);
+        foreach ($this->slidesNames as $oneSlide)
+        {
+            $product->images()->updateOrCreate([ 'image'  => $oneSlide ]);
         }
         return true;
     }
@@ -56,14 +59,16 @@ class Helper
     public static function load(string $table, array $columns, string $idColumn, int $id, bool $count = false)
     {
         $data = DB::table($table)->select($columns)
-            ->where($idColumn, '=', $id)->get();
+            ->where($idColumn , '=', $id)->get();
         echo ($count === true)
-            ? json_encode(['data' => $data, "num" => count($data)])
-            : json_encode(['data' => $data]);
+            ? json_encode([ 'data' => $data, "num" => count($data)])
+            : json_encode([ 'data' => $data ]);
     }
 
     public static function getIdOfPlaceByName($name)
     {
         return Place::where('name', $name)->pluck('id')[0];
     }
+
 }
+

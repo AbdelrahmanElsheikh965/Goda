@@ -40,7 +40,7 @@
                             <td> {{$loop->iteration}} </td>
                             <td> {{$product->name}} </td>
                             <td><textarea cols="30" rows="3" disabled>{{$product->description}}</textarea> </td>
-                            <td width="150px"> <img src="{{ $product->cover_image }}" width="100px" height="90px"> </td>
+                            <td width="150px"> <img src="{{asset('images/'.$product->cover_image)}}" width="100px" height="90px"> </td>
                             <td style="text-align: center"> {{$product->subCategory->category->name}} </td>
                             <td style="text-align: center"> {{$product->subCategory->name}} </td>
                             <td style="text-align: center"> {{$product->price}} </td>

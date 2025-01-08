@@ -31,9 +31,9 @@ class SubCategoryController extends Controller
             ]);
 
         if ($request->file('sub_category_image')) {
-            $subCategoryImage = Helper::save($request->file('sub_category_image'));
-            $request->merge(['image' => $subCategoryImage]);
+            $request->merge(['image' => $request->sub_category_image->getClientOriginalName()]);
             $subCategory = SubCategory::create($request->except('_token', 'sub_category_image'));
+            Helper::save($request->file('sub_category_image'), '/admin/subCategories');
         }else{
             $subCategory = SubCategory::create($request->all());
         }
@@ -52,9 +52,9 @@ class SubCategoryController extends Controller
         $request->validate(['name' => 'required']);
 
         if ($request->file('sub_category_image')) {
-            $subCategoryImage = Helper::save($request->file('sub_category_image'));//, '/admin/subCategories');
-            $request->merge(['image' => $subCategoryImage]);
+            $request->merge(['image' => $request->sub_category_image->getClientOriginalName()]);
             $subCategory = $subCategory->update($request->except('sub_category_image'));
+            Helper::save($request->file('sub_category_image'), '/admin/subCategories');
         }else{
             $subCategory = $subCategory->update($request->except('sub_category_image'));
         }

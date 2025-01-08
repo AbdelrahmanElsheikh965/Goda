@@ -30,7 +30,7 @@ class ClientProductRepository implements ClientProductInterface
 
         // Filter with search keyword if found.
         if ($needle = $request->q) {
-            $products = Product::where('name', 'Like', "%$needle%")->paginate(9);
+            $products = Product::where('name', 'Like', "%$needle%")->get();
             return [$products, $categories];
         }
 
