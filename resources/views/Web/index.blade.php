@@ -12,24 +12,24 @@
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-left">
-                <img src="{{ $webImages[0]->image }}" loading="lazy" alt="">
+                <img src="{{ $webImages[0]->image ?? '' }}" loading="lazy" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong> {{$webParagraphs[0]->title}} </strong></h1>
-                            <p class="m-b-40"> {{ $webParagraphs[0]->body}} </p>
+                            <h1 class="m-b-20"><strong> {{$webParagraphs[0]->title ?? '' }} </strong></h1>
+                            <p class="m-b-40"> {{ $webParagraphs[0]->body ?? ''}} </p>
                             <p><a class="btn hvr-hover" href="{{url('products/')}}">Let's Get Started</a></p>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="text-center">
-                <img src="{{ $webImages[1]->image }}" loading="lazy" alt="">
+                <img src="{{ $webImages[1]->image ?? '' }}" loading="lazy" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong> {{$webParagraphs[1]->title}} </strong></h1>
-                            <p class="m-b-40"> {{$webParagraphs[1]->body}} </p>
+                            <h1 class="m-b-20"><strong> {{$webParagraphs[1]->title ?? ''}} </strong></h1>
+                            <p class="m-b-40"> {{$webParagraphs[1]->body ?? ''}} </p>
                             <p><a class="btn hvr-hover" href="{{url('products')}}">Click to visit</a></p>
                         </div>
                     </div>
@@ -37,12 +37,12 @@
             </li>
 
             <li class="text-right">
-                <img src="{{ $webImages[2]->image }}" loading="lazy" alt="">
+                <img src="{{ $webImages[2]->image ?? ''}}" loading="lazy" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong> {{$webParagraphs[2]->title}} </strong></h1>
-                            <p class="m-b-40"> {{$webParagraphs[2]->body}} </p>
+                            <h1 class="m-b-20"><strong> {{$webParagraphs[2]->title ?? ''}} </strong></h1>
+                            <p class="m-b-40"> {{$webParagraphs[2]->body ?? ''}} </p>
                             <p><a class="btn hvr-hover" href="{{url('products')}}">Go shopping now</a></p>
                         </div>
                     </div>

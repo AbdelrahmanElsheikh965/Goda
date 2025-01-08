@@ -5,13 +5,13 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget">
-                        <h4> {{ $webParagraphs[3]->title}} </h4>
+                        <h4> {{ $webParagraphs[3]->title ?? ''}} </h4>
                         <p>
-                            {{ $webParagraphs[3]->body}}
+                            {{ $webParagraphs[3]->body ?? ''}}
                         </p>
                         <ul>
-                            <li><a href="{{$contactDetails->fb_link}}"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="https://wa.me/{{$contactDetails->wa_link}}"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            <li><a href="{{$contactDetails->fb_link ?? '' }}"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://wa.me/{{$contactDetails->wa_link ?? '' }}"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -23,13 +23,13 @@
                         <h4>Contact Us</h4>
                         <ul>
                             <li>
-                                <p><i class="fas fa-map-marker-alt"></i>Address: {{$contactDetails->address}} </p>
+                                <p><i class="fas fa-map-marker-alt"></i>Address: {{$contactDetails->address ?? ''}} </p>
                             </li>
                             <li>
-                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:{{$contactDetails->phone}}"> {{$contactDetails->phone}} </a></p>
+                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:{{$contactDetails->phone ?? ''}}"> {{$contactDetails->phone ?? ''}} </a></p>
                             </li>
                             <li>
-                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:{{$contactDetails->email}}"> {{$contactDetails->email}} </a></p>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:{{$contactDetails->email ?? ''}}"> {{$contactDetails->email ?? ''}} </a></p>
                             </li>
                         </ul>
                     </div>

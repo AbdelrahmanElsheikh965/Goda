@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         # You must comment this line just to migrate for the first time.
-        // SharedData::getInstance()->HandleAllSharedData();
+        SharedData::getInstance()->HandleAllSharedData();
     }
 }
